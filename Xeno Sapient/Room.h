@@ -101,7 +101,7 @@ namespace xs_game {
     std::map<std::string, std::shared_ptr<Room>>         connections;
     std::vector<std::shared_ptr<xs_game::Interactable>> useList;
     
-  };
+  }; 
   
 }
 
