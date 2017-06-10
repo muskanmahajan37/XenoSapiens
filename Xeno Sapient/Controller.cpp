@@ -103,7 +103,7 @@ void Controller::play()
 Controller::command Controller::parseToken(std::string input)
 {
  
-  std::cout << "controller.cpp parseToken input: \"" + input + "\"\n";
+  //std::cout << "controller.cpp parseToken input: \"" + input + "\"\n";
   
   if (input.compare("go") == 0) {
     return GO;
