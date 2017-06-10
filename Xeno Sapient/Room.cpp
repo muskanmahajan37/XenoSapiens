@@ -57,7 +57,8 @@ Room::~Room() noexcept
 std::string Room::look(std::string at) const
 {
   //TODO: Every room has its own description?
-  return "fixme! Room.cpp look function\n";
+  return description;
+  //return "fixme! Room.cpp look function\n";
 }
 
 /**

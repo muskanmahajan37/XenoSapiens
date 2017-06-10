@@ -17,7 +17,7 @@ using namespace xs_game;
 
 void View::display(std::string message)
 {
-  
+  std::cout << message << std::endl;
 }
 
 /**
@@ -26,7 +26,10 @@ void View::display(std::string message)
 std::string View::getInput()
 {
   std::string pinput;
-  std::getline(std::cin, pinput);
+  std::getline(std::cin, pinput, '\n');
+  
+  std::cout << "view.cpp getInput pinput: \"" + pinput + "\"\n";
+  
   return pinput;
 }
 

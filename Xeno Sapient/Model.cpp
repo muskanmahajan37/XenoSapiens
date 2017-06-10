@@ -48,6 +48,19 @@ void Model::initRooms() {
   canteniaRoom->setDescription("Cantenia des\n");
   lockerRoom->setDescription("Locker des\n");
   
+  commonRoom->addConnectionOneWay("south", hallwayRoom);
+  hallwayRoom->addConnectionOneWay("north", commonRoom);
+  
+  hallwayRoom->addConnectionOneWay("med", medRoom);
+  medRoom->addConnectionOneWay("out", hallwayRoom);
+  
+  hallwayRoom->addConnectionOneWay("cantenia", canteniaRoom);
+  canteniaRoom->addConnectionOneWay("out", canteniaRoom);
+  
+  hallwayRoom->addConnectionOneWay("cantenia", lockerRoom);
+  lockerRoom->addConnectionOneWay("out", hallwayRoom);
+  
+  
   currentRoom = commonRoom;
   
 }
@@ -78,8 +91,11 @@ bool Model::changeRoom(std::string dir)
   
   if (currentRoom->checkConnection(dir) == 0) {
     // there is no conncetion
+    std::cout << "Model.cpp changeRoom no connection found in direction: \"" + dir + "\"\n";
     return false;
   }
+  
+  std::cout << "Model.cpp changeRoom connection found!\n";
   
   currentRoom = currentRoom->checkConnection(dir);
   return true;

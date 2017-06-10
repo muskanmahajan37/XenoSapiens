@@ -62,7 +62,7 @@ void Controller::play()
   while(true) {
     std::vector<std::string> tokens = view_->getTokens();
     
-    if (tokens.at(0) == "")
+    if (tokens.size() == 0 || tokens.at(0) == "")
     {
       // If it's just an empty line, change nothing and start over.
       break;
@@ -76,10 +76,16 @@ void Controller::play()
         std::cout << "case GO:\n";
         model_->changeRoom(tokens.at(1));
         break;
-        
       case LOOK:
         std::cout << "case LOOK:\n";
-        model_->look(tokens.at(1));
+        
+        if (tokens.size() == 1) {
+          std::cout << "  size == 1\n";
+          view_->display(model_->look("garbage"));
+        } else {
+          std::cout << "  size == 2\n";
+          view_->display(model_->look(tokens.at(1)));
+        }
         break;
         
       case NA:
@@ -96,6 +102,8 @@ void Controller::play()
 
 Controller::command Controller::parseToken(std::string input)
 {
+ 
+  std::cout << "controller.cpp parseToken input: \"" + input + "\"\n";
   
   if (input.compare("go") == 0) {
     return GO;

@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
   
   
   controller->init();
-  //controller->play();
+  controller->play();
   
   
   
