@@ -62,9 +62,6 @@ namespace xs_game {
     command parseToken(std::string input);
     
     
-
-    
-    
     std::shared_ptr<Model> model_;
     std::shared_ptr<View> view_;
     
