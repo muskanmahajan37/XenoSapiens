@@ -32,11 +32,11 @@ bool Controller::changeRoom(std::string dir)
 {
   if (model_->changeRoom(dir)) {
     // Room changed
-    std::cout << "Changed room \n";
+    //std::cout << "Changed room \n";
     return true;
   } else {
     // Room didn't change
-    std::cout << "Didn't change room: " + dir + "\n";
+    //std::cout << "Didn't change room: " + dir + "\n";
     return false;
   }
 }
@@ -46,6 +46,7 @@ bool Controller::changeRoom(std::string dir)
  * If this room doesn't contain object refered to with at, then a default
  * message is returned.
  */
+// TODO: make this a void funciton. 
 std::string Controller::look(std::string at)
 {
   view_->display(model_->look(at));
@@ -74,7 +75,7 @@ void Controller::play()
     
     switch (command) {
       case GO:
-        std::cout << "case GO:\n";
+        //std::cout << "case GO:\n";
         
         if (tokens.size() < 2) {
           view_->display("You didn't tell me where to go. \n");
@@ -82,26 +83,27 @@ void Controller::play()
         }
         
         if (model_->changeRoom(tokens.at(1))) {
-          view_->display("We moved somewere correctly\n");
+          view_->display("You move into the next room.\n");
         } else {
-          view_->display("We didn't go somewere\n");
+          view_->display("Mallformed command, cannot go there for various reasons.\n");
         }
         break;
       case LOOK:
-        std::cout << "case LOOK:\n";
+        //std::cout << "case LOOK:\n";
         
         if (tokens.size() == 1) {
-          std::cout << "  size == 1\n";
+          //std::cout << "  size == 1\n";
           view_->display(model_->look("garbage"));
-        } else {
-          std::cout << "  size == 2\n";
+        } else if (tokens.size() == 2) {
           view_->display(model_->look(tokens.at(1)));
+        } else {
+          // Can't really look at 2 things at once...
         }
         break;
         
       case NA:
       default:
-        std::cout << "case NA:\n";
+        view_->display("Mallformed command\n");
         // Mallformed command
         break;
     }

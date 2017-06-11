@@ -12,6 +12,7 @@
 
 
 #include "Room.h"
+#include "NocabUtil.h"
 
 using namespace xs_game;
 
@@ -134,8 +135,8 @@ void Room::setDescription(std::string newDescritpion)
 std::shared_ptr<Room> Room::checkConnection(std::string dir)
 {
   std::shared_ptr<Room> result;
+  nocabToLower(dir);
   try {
-    
     result = connections[dir];
     return result;
     

@@ -29,6 +29,19 @@ static bool nocabStrCmp(std::string a, std::string b) {
   return true;
 }
 
+/**
+ * Changes every character to a lowercase. 
+ */
+static void nocabToLower(std::string a) {
+  int i = 0;
+  char c;
+  while (a[i])
+  {
+    c = a[i];
+    putchar (tolower(c));
+    i++;
+  }
+}
 
 
 #endif /* NocabUtil_h */

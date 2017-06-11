@@ -50,6 +50,9 @@ void Model::initRooms() {
   
   commonRoom->addConnectionOneWay("south", hallwayRoom);
   hallwayRoom->addConnectionOneWay("north", commonRoom);
+  commonRoom->addConnectionOneWay("s", hallwayRoom);
+  hallwayRoom->addConnectionOneWay("n", commonRoom);
+  
   
   hallwayRoom->addConnectionOneWay("med", medRoom);
   medRoom->addConnectionOneWay("out", hallwayRoom);
