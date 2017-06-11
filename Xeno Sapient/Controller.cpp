@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "Controller.h"
+#include "NocabUtil.h"
 
 
 using namespace xs_game;
@@ -74,7 +75,17 @@ void Controller::play()
     switch (command) {
       case GO:
         std::cout << "case GO:\n";
-        model_->changeRoom(tokens.at(1));
+        
+        if (tokens.size() < 2) {
+          view_->display("You didn't tell me where to go. \n");
+          break;
+        }
+        
+        if (model_->changeRoom(tokens.at(1))) {
+          view_->display("We moved somewere correctly\n");
+        } else {
+          view_->display("We didn't go somewere\n");
+        }
         break;
       case LOOK:
         std::cout << "case LOOK:\n";
@@ -94,7 +105,7 @@ void Controller::play()
         // Mallformed command
         break;
     }
-      }
+  }
 }
 
 
@@ -105,9 +116,9 @@ Controller::command Controller::parseToken(std::string input)
  
   //std::cout << "controller.cpp parseToken input: \"" + input + "\"\n";
   
-  if (input.compare("go") == 0) {
+  if (nocabStrCmp(input, "go")) { //input.compare("go") == 0) {
     return GO;
-  } else if (input.compare("look") == 0) {
+  } else if (nocabStrCmp(input, "look")) { //input.compare("look") == 0) {
     return LOOK;
   }
   
@@ -116,5 +127,11 @@ Controller::command Controller::parseToken(std::string input)
 }
 
 
+//
+//
+//bool Controller::nocabStrCmp(std::string a, std::string b) {
+//  
+//
+//}
 
 

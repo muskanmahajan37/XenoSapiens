@@ -43,6 +43,7 @@
 		39B6F72E1EEA0834009A6FBF /* StartRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartRoom.cpp; sourceTree = "<group>"; };
 		39B6F7301EEA0902009A6FBF /* StartRoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartRoom.h; sourceTree = "<group>"; };
 		39B6F7311EEA3006009A6FBF /* Room.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Room.cpp; sourceTree = "<group>"; };
+		39EBB65E1EEDDBE400C6A185 /* NocabUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NocabUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +90,7 @@
 				39B6F7241EE8A22A009A6FBF /* Interactable.h */,
 				39B6F7221EE8A01F009A6FBF /* Player.h */,
 				39B6F7231EE8A145009A6FBF /* Item.h */,
+				39EBB65E1EEDDBE400C6A185 /* NocabUtil.h */,
 			);
 			path = "Xeno Sapient";
 			sourceTree = "<group>";
@@ -282,6 +284,7 @@
 				39B6F7201EE8990D009A6FBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
