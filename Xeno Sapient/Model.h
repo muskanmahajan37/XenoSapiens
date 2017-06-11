@@ -58,6 +58,13 @@ namespace xs_game {
     
     void initRooms();
     
+    /**
+     * Connects the two rooms in such a way that room a, is direction of b.
+     * for example the dirset(a, west, b) means that a is west of b
+     *                                               b is east of a
+     */
+    void dirSet(std::shared_ptr<Room> a, std::string dir, std::shared_ptr<Room> b);
+    
     
     std::shared_ptr<xs_game::Room> currentRoom;
     xs_game::Player player;

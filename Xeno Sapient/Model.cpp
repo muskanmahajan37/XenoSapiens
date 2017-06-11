@@ -10,6 +10,8 @@
 #include <iostream>
 #include <memory>
 
+#include "NocabUtil.h"
+
 #include "Model.h"
 
 #include "StartRoom.h"
@@ -48,10 +50,13 @@ void Model::initRooms() {
   canteniaRoom->setDescription("Cantenia des\n");
   lockerRoom->setDescription("Locker des\n");
   
-  commonRoom->addConnectionOneWay("south", hallwayRoom);
-  hallwayRoom->addConnectionOneWay("north", commonRoom);
-  commonRoom->addConnectionOneWay("s", hallwayRoom);
-  hallwayRoom->addConnectionOneWay("n", commonRoom);
+  // hallway is south of commonRoom
+  dirSet(hallwayRoom, "south", commonRoom);
+  
+//  commonRoom->addConnectionOneWay("south", hallwayRoom);
+//  hallwayRoom->addConnectionOneWay("north", commonRoom);
+//  commonRoom->addConnectionOneWay("s", hallwayRoom);
+//  hallwayRoom->addConnectionOneWay("n", commonRoom);
   
   
   hallwayRoom->addConnectionOneWay("med", medRoom);
@@ -105,8 +110,40 @@ bool Model::changeRoom(std::string dir)
 }
 
 
-
-
+// Room a is dir of b
+// room b is (opposit of dir) of a
+void Model::dirSet(std::shared_ptr<Room> a, std::string dir, std::shared_ptr<Room> b) {
+  
+  if (nocabStrCmp(dir, "north") || nocabStrCmp(dir, "n")) {
+    b->addConnectionOneWay("north", a);
+    b->addConnectionOneWay("n", a);
+    a->addConnectionOneWay("south", b);
+    a->addConnectionOneWay("s", b);
+  }
+  if (nocabStrCmp(dir, "south") || nocabStrCmp(dir, "s")) {
+    b->addConnectionOneWay("south", a);
+    b->addConnectionOneWay("s", a);
+    a->addConnectionOneWay("north", b);
+    a->addConnectionOneWay("n", b);
+    
+  }
+  if (nocabStrCmp(dir, "east") || nocabStrCmp(dir, "e")) {
+    b->addConnectionOneWay("east", a);
+    b->addConnectionOneWay("e", a);
+    a->addConnectionOneWay("west", b);
+    a->addConnectionOneWay("w", b);
+    
+  }
+  if (nocabStrCmp(dir, "west") || nocabStrCmp(dir, "w")) {
+    b->addConnectionOneWay("west", a);
+    b->addConnectionOneWay("w", a);
+    a->addConnectionOneWay("east", b);
+    a->addConnectionOneWay("e", b);
+    
+  }
+  
+  
+}
 
 
 
