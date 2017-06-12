@@ -1,4 +1,0 @@
-This is text in a text file named text.txt
-this is a new line
-
-there is a line of space above this one

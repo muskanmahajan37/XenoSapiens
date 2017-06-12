@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		392CD20A1EEEFCEE0045B11A /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392CD2011EEEFCEE0045B11A /* Model.cpp */; };
+		392CD20B1EEEFCEE0045B11A /* Room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392CD2021EEEFCEE0045B11A /* Room.cpp */; };
+		392CD20C1EEEFCEE0045B11A /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392CD2031EEEFCEE0045B11A /* Controller.cpp */; };
+		392CD20D1EEEFCEE0045B11A /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392CD2061EEEFCEE0045B11A /* View.cpp */; };
 		39B6F71B1EE8990D009A6FBF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F71A1EE8990D009A6FBF /* main.cpp */; };
-		39B6F7271EE8CF26009A6FBF /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F7251EE8CF26009A6FBF /* Controller.cpp */; };
-		39B6F72A1EE8D0FE009A6FBF /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F7281EE8D0FE009A6FBF /* Model.cpp */; };
-		39B6F72D1EEA067E009A6FBF /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F72B1EEA067E009A6FBF /* View.cpp */; };
-		39B6F72F1EEA0834009A6FBF /* StartRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F72E1EEA0834009A6FBF /* StartRoom.cpp */; };
-		39B6F7321EEA3006009A6FBF /* Room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F7311EEA3006009A6FBF /* Room.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,21 +27,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		392CD1F01EEEFBC40045B11A /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		392CD2011EEEFCEE0045B11A /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		392CD2021EEEFCEE0045B11A /* Room.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Room.cpp; sourceTree = "<group>"; };
+		392CD2031EEEFCEE0045B11A /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
+		392CD2041EEEFCEE0045B11A /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		392CD2051EEEFCEE0045B11A /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		392CD2061EEEFCEE0045B11A /* View.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = View.cpp; sourceTree = "<group>"; };
+		392CD2071EEEFCEE0045B11A /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		392CD2081EEEFCEE0045B11A /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
+		392CD2091EEEFCEE0045B11A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		39B6F7171EE8990D009A6FBF /* Xeno Sapient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Xeno Sapient"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B6F71A1EE8990D009A6FBF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		39B6F7211EE89D98009A6FBF /* Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
-		39B6F7221EE8A01F009A6FBF /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		39B6F7231EE8A145009A6FBF /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		39B6F7241EE8A22A009A6FBF /* Interactable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interactable.h; sourceTree = "<group>"; };
-		39B6F7251EE8CF26009A6FBF /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
-		39B6F7261EE8CF26009A6FBF /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
-		39B6F7281EE8D0FE009A6FBF /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
-		39B6F7291EE8D0FE009A6FBF /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
-		39B6F72B1EEA067E009A6FBF /* View.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = View.cpp; sourceTree = "<group>"; };
-		39B6F72C1EEA067E009A6FBF /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
-		39B6F72E1EEA0834009A6FBF /* StartRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartRoom.cpp; sourceTree = "<group>"; };
-		39B6F7301EEA0902009A6FBF /* StartRoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartRoom.h; sourceTree = "<group>"; };
-		39B6F7311EEA3006009A6FBF /* Room.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Room.cpp; sourceTree = "<group>"; };
 		39EBB65E1EEDDBE400C6A185 /* NocabUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NocabUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,9 +55,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		392CD1EF1EEEFBC40045B11A /* text */ = {
+			isa = PBXGroup;
+			children = (
+				392CD1F01EEEFBC40045B11A /* test.txt */,
+			);
+			name = text;
+			path = "Xeno Sapient/text";
+			sourceTree = "<group>";
+		};
+		392CD20E1EEEFDE40045B11A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				392CD2061EEEFCEE0045B11A /* View.cpp */,
+				392CD2081EEEFCEE0045B11A /* View.h */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		392CD20F1EEEFDEC0045B11A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				392CD2031EEEFCEE0045B11A /* Controller.cpp */,
+				392CD2041EEEFCEE0045B11A /* Controller.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		392CD2101EEEFDF70045B11A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				392CD2011EEEFCEE0045B11A /* Model.cpp */,
+				392CD2051EEEFCEE0045B11A /* Model.h */,
+				392CD2021EEEFCEE0045B11A /* Room.cpp */,
+				392CD2071EEEFCEE0045B11A /* Room.h */,
+				392CD2091EEEFCEE0045B11A /* Player.h */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		39B6F70E1EE8990D009A6FBF = {
 			isa = PBXGroup;
 			children = (
+				392CD1EF1EEEFBC40045B11A /* text */,
 				39B6F7191EE8990D009A6FBF /* Xeno Sapient */,
 				39B6F7181EE8990D009A6FBF /* Products */,
 			);
@@ -77,18 +115,10 @@
 			isa = PBXGroup;
 			children = (
 				39B6F71A1EE8990D009A6FBF /* main.cpp */,
-				39B6F7311EEA3006009A6FBF /* Room.cpp */,
-				39B6F7211EE89D98009A6FBF /* Room.h */,
-				39B6F72E1EEA0834009A6FBF /* StartRoom.cpp */,
-				39B6F7301EEA0902009A6FBF /* StartRoom.h */,
-				39B6F7251EE8CF26009A6FBF /* Controller.cpp */,
-				39B6F7261EE8CF26009A6FBF /* Controller.h */,
-				39B6F72B1EEA067E009A6FBF /* View.cpp */,
-				39B6F72C1EEA067E009A6FBF /* View.h */,
-				39B6F7281EE8D0FE009A6FBF /* Model.cpp */,
-				39B6F7291EE8D0FE009A6FBF /* Model.h */,
+				392CD2101EEEFDF70045B11A /* Model */,
+				392CD20F1EEEFDEC0045B11A /* Controller */,
+				392CD20E1EEEFDE40045B11A /* View */,
 				39B6F7241EE8A22A009A6FBF /* Interactable.h */,
-				39B6F7221EE8A01F009A6FBF /* Player.h */,
 				39B6F7231EE8A145009A6FBF /* Item.h */,
 				39EBB65E1EEDDBE400C6A185 /* NocabUtil.h */,
 			);
@@ -152,12 +182,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39B6F7321EEA3006009A6FBF /* Room.cpp in Sources */,
-				39B6F72D1EEA067E009A6FBF /* View.cpp in Sources */,
-				39B6F72A1EE8D0FE009A6FBF /* Model.cpp in Sources */,
+				392CD20B1EEEFCEE0045B11A /* Room.cpp in Sources */,
 				39B6F71B1EE8990D009A6FBF /* main.cpp in Sources */,
-				39B6F72F1EEA0834009A6FBF /* StartRoom.cpp in Sources */,
-				39B6F7271EE8CF26009A6FBF /* Controller.cpp in Sources */,
+				392CD20A1EEEFCEE0045B11A /* Model.cpp in Sources */,
+				392CD20C1EEEFCEE0045B11A /* Controller.cpp in Sources */,
+				392CD20D1EEEFCEE0045B11A /* View.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
