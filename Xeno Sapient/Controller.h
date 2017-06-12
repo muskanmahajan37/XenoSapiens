@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include <string>
+#include <sstream>
+#include <fstream>
 
 #include "Model.h"
 #include "View.h"
@@ -52,12 +54,18 @@ namespace xs_game {
     
     void play();
     
+    /**
+     * Takes in a file stream from the Model object and pushes it to the
+     * the View to display.
+     */
+    void viewFile(std::ifstream infile);
+    
   protected:
     
     
   private:
     
-    enum command {GO, LOOK, NA};
+    enum command {GO, LOOK, USE, TALK, NA};
     
     command parseToken(std::string input);
     

@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "Controller.h"
-#include "NocabUtil.h" 
+#include "NocabUtil.h"
 
 
 using namespace xs_game;
@@ -46,7 +46,7 @@ bool Controller::changeRoom(std::string dir)
  * If this room doesn't contain object refered to with at, then a default
  * message is returned.
  */
-// TODO: make this a void funciton. 
+// TODO: make this a void funciton.
 std::string Controller::look(std::string at)
 {
   view_->display(model_->look(at));
@@ -115,13 +115,17 @@ void Controller::play()
 
 Controller::command Controller::parseToken(std::string input)
 {
- 
+  
   //std::cout << "controller.cpp parseToken input: \"" + input + "\"\n";
   
   if (nocabStrCmp(input, "go")) { //input.compare("go") == 0) {
     return GO;
   } else if (nocabStrCmp(input, "look")) { //input.compare("look") == 0) {
     return LOOK;
+  } else if (nocabStrCmp(input, "use")) {
+    return USE;
+  } else if (nocabStrCmp(input, "talk")) {
+    return TALK;
   }
   
   // Else we don't understand so return the default unknown command enum
@@ -129,10 +133,27 @@ Controller::command Controller::parseToken(std::string input)
 }
 
 
+void Controller::viewFile(std::ifstream inFile)
+{
+  std::string x;
+  if (!inFile.is_open()) {
+    view_->display("Error! Could not open file. In viewFile Controller.cpp");
+    return;
+  }
+  
+  while (getline(inFile, x)) {
+    view_->display(x);
+    view_->display("\n");
+  }
+  
+  inFile.close();
+}
+
+
 //
 //
 //bool Controller::nocabStrCmp(std::string a, std::string b) {
-//  
+//
 //
 //}
 

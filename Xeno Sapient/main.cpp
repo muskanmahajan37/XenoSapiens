@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 
 #include "Room.h"
@@ -41,9 +42,23 @@ int main(int argc, const char * argv[]) {
   
   
   controller->init();
-  controller->play();
+  //controller->play();
   
   
+  std::string x;
+  ///Users/arthurbacon/Desktop/GitProjects/XenoSapiens/Xeno Sapient/
+  std::ifstream inFile("descriptions/test.txt");
+  //inFile.open("test");
+  
+  if (!inFile.is_open()) {
+    std::cout << "didn't open a new file\n";
+  }
+  
+  while (getline(inFile, x)) {
+    std::cout << x << std::endl ;
+  }
+  
+  inFile.close();
   
   return 0;
 }

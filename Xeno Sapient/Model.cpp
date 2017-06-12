@@ -14,7 +14,6 @@
 
 #include "Model.h"
 
-#include "StartRoom.h"
 #include "Room.h"
 
 using namespace xs_game;
