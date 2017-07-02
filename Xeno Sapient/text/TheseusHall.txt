@@ -1,0 +1,9 @@
+The MAIN HAL of the Theseus. This part of the ship is mostly taken up by two auxiliary rooms, pressed along the East and West walls of the ship leaving this walkway down the middle. Although it is not very long or large, more of a walkway than a MAIN HALL. The HALL itself is more narrow than the MAIN ROOM to the North, Only about 3 people can walk abreast. 
+There is no door between the MAIN ROOM to the North and this HALLWAY. 
+The HALLWAY abrupt suddenly at the very South end. 
+Along the Western wall are the SHOWER ROOM accessible through the LOCKER ROOM. 
+Along the Eastern wall is the CANTINA. 
+
+The hallway opens directly into the main room. (North)
+There is a door-lock to the cantina. (East)
+There is a door-lock to the locker room. (West)

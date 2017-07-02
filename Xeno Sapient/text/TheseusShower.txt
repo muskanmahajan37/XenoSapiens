@@ -1,0 +1,3 @@
+The only showers and bathrooms on the Theseus. On the West side of the small skinny room are several stalls along the wall. Each stall has a button on the door to switch between a bathroom and shower. Pushing the button will retract or extend a showered or toilet. After use the room self sanitizes, but it never can quite get the whole thing clean. On the opposite wall is a long mirror with a few sinks. 
+
+Behind you is a door-lock to the Locker Room. (North, Out)

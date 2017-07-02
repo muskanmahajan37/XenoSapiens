@@ -1,0 +1,4 @@
+A LOCKER ROOM. There are 3 long rows of floor to ceiling lockers, each only 2 feet wide and 2 feet deep. Each is equip with a hand-print reader, although a few well placed crowbars could easily pry any locker open. This is the only room on the Theseus where privacy exists, and each worker only gets a few cubic feet of it. There is exactly one locker for each worker on the Theseus. 
+
+Behind you is a door-lock back to the MAIN HALL of the Theseus. (East, Out)
+Past the lockers is a door-lock to the SHOWERS. (South)

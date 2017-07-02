@@ -60,10 +60,14 @@ namespace xs_game {
      */
     void viewFile(std::ifstream infile);
     
+    void nocabParseFile(const char* path);
+    
   protected:
     
     
   private:
+    
+    void parceDecision(std::ifstream &inFile);
     
     enum command {GO, LOOK, USE, TALK, NA};
     
@@ -79,6 +83,8 @@ namespace xs_game {
   };
   
 }
+
+
 
 
 

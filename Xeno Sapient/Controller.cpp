@@ -158,3 +158,135 @@ void Controller::viewFile(std::ifstream inFile)
 //}
 
 
+
+
+
+/////////////////////////////////////////////////////////////
+// Dealing with dialogue trees.
+
+
+
+// First I need to make a function that can print all the files
+
+// Print all the possible choices
+// Store the link destinations into an array
+//    Player selects one of them (lets say choice 2)
+// Fork over to destination stored in array index 1 (cause it's 0 indexed)
+
+void Controller::parceDecision(std::ifstream &inFile)
+{
+  std::string x;
+  
+  
+  // We come in, it starts off on the line of the open '=' tag
+  // Move to the next line
+  // Is that the close tag?
+  //  yes => return
+  //  no  => print line
+  // Move to the next line
+  // Is that the close tag?
+  //  yes => return
+  //  no => print line
+  
+  while(true) {
+    getline(inFile, x);
+    if (x.at(0) == '=') {
+      // We've found the close tag.
+      return;
+    } else {
+      // We need to remove the destination from it then display it
+      std::string link;
+      int firstTag  = 0;
+      int secondTag = 0;
+      for (int i = 0; i < x.size(); i++) {
+        
+        if (x.at(i) == '=' && firstTag == 0) {
+          firstTag = i;
+          continue;
+        }
+        if (x.at(i) == '=' && firstTag != 0) {
+          secondTag = i;
+        }
+      }
+      
+      link = x.substr(firstTag + 1, secondTag - firstTag - 1);
+      
+      
+      
+      
+      view_->display(x);
+      view_->display("   link: \"" + link + "\"");
+      view_->display("");
+    }
+  }
+}
+
+
+
+/*
+ * Parces the specified file according to a few conventions.
+ * Each convention symbol apears at the start of the line, and each folowing line
+ * is to be effected by they folowing codex. The 'open' and 'close'
+ * encoded symbol is the same, much like comments in code. IE
+ *
+ *  This is description
+ *  =
+ *  this is a player choice
+ *  =
+ *  This is description
+ *
+ * '=' implies that the folowing items are player selectable choices
+ */
+void Controller::nocabParseFile(const char* path)
+{
+  // I need to read a file line by line untill I find the specified character
+  
+  
+  std::string x;
+  ///Users/arthurbacon/Desktop/GitProjects/XenoSapiens/Xeno Sapient/
+  std::ifstream inFile("text/test.txt");
+  //inFile.open("test");
+  
+  if (!inFile.is_open()) {
+    view_->display("didn't open a new file");
+  }
+  
+  // Check every line in the file for the first character
+  while (getline(inFile, x))
+  {
+    
+    if (x.length() == 0) {
+      view_->display("");
+      continue;
+    }
+    
+    switch (x.at(0))
+    {
+      case '=':
+        // character choice found
+        view_->display("  Going into parceDecision");
+        parceDecision(inFile);
+        view_->display("  Coming out parceDecision");
+        
+        
+        // Here we've found the close tag.
+        
+        break;
+      default:
+        // No code char, print description
+        view_->display(x);
+        //view_->display("");
+        break;
+    }
+    
+  }
+  
+  
+  inFile.close();
+  
+}
+
+
+
+
+
