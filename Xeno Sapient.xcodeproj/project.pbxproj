@@ -11,6 +11,7 @@
 		392CD20B1EEEFCEE0045B11A /* Room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392CD2021EEEFCEE0045B11A /* Room.cpp */; };
 		392CD20C1EEEFCEE0045B11A /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392CD2031EEEFCEE0045B11A /* Controller.cpp */; };
 		392CD20D1EEEFCEE0045B11A /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392CD2061EEEFCEE0045B11A /* View.cpp */; };
+		392EF2751F092E3A00C56713 /* DescriptionLink.c in Sources */ = {isa = PBXBuildFile; fileRef = 392EF2731F092E3A00C56713 /* DescriptionLink.c */; };
 		39B6F71B1EE8990D009A6FBF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F71A1EE8990D009A6FBF /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,9 @@
 		392CD2071EEEFCEE0045B11A /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
 		392CD2081EEEFCEE0045B11A /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
 		392CD2091EEEFCEE0045B11A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		392EF2721F0926CE00C56713 /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Util.h; path = "Xeno Sapient/Util.h"; sourceTree = "<group>"; };
+		392EF2731F092E3A00C56713 /* DescriptionLink.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DescriptionLink.c; path = "Xeno Sapient/DescriptionLink.c"; sourceTree = "<group>"; };
+		392EF2741F092E3A00C56713 /* DescriptionLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescriptionLink.h; path = "Xeno Sapient/DescriptionLink.h"; sourceTree = "<group>"; };
 		39B6F7171EE8990D009A6FBF /* Xeno Sapient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Xeno Sapient"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B6F71A1EE8990D009A6FBF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		39B6F7231EE8A145009A6FBF /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -97,6 +101,9 @@
 		39B6F70E1EE8990D009A6FBF = {
 			isa = PBXGroup;
 			children = (
+				392EF2721F0926CE00C56713 /* Util.h */,
+				392EF2731F092E3A00C56713 /* DescriptionLink.c */,
+				392EF2741F092E3A00C56713 /* DescriptionLink.h */,
 				392CD1EF1EEEFBC40045B11A /* text */,
 				39B6F7191EE8990D009A6FBF /* Xeno Sapient */,
 				39B6F7181EE8990D009A6FBF /* Products */,
@@ -182,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392EF2751F092E3A00C56713 /* DescriptionLink.c in Sources */,
 				392CD20B1EEEFCEE0045B11A /* Room.cpp in Sources */,
 				39B6F71B1EE8990D009A6FBF /* main.cpp in Sources */,
 				392CD20A1EEEFCEE0045B11A /* Model.cpp in Sources */,
