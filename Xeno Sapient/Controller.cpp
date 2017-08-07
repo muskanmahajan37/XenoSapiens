@@ -173,10 +173,10 @@ void Controller::viewFile(std::ifstream inFile)
 //    Player selects one of them (lets say choice 2)
 // Fork over to destination stored in array index 1 (cause it's 0 indexed)
 
-void Controller::parceDecision(std::ifstream &inFile)
+std::vector<std::string> Controller::parceDecision(std::ifstream &inFile)
 {
   std::string x;
-  
+  std::vector<std::string> links;
   
   // We come in, it starts off on the line of the open '=' tag
   // Move to the next line
@@ -188,11 +188,18 @@ void Controller::parceDecision(std::ifstream &inFile)
   //  yes => return
   //  no => print line
   
+  /* NOTE: the only way to exit this loop is in the first if check.
+   *        the only way to exit this loop is if the file we're reading
+   *        actually has a closing '=' tag.
+   */
   while(true) {
+    
+    
+    // TODO: error handeling for mallformed tags here:
     getline(inFile, x);
     if (x.at(0) == '=') {
       // We've found the close tag.
-      return;
+      return links;
     } else {
       // We need to remove the destination from it then display it
       std::string link;
@@ -210,15 +217,29 @@ void Controller::parceDecision(std::ifstream &inFile)
       }
       
       link = x.substr(firstTag + 1, secondTag - firstTag - 1);
+      x = x.substr(0, firstTag);
       
       
-      
-      
+      // Put the link in the next valid position
+      links.push_back(link);
       view_->display(x);
-      view_->display("   link: \"" + link + "\"");
-      view_->display("");
-    }
-  }
+      //view_->display("   link: \"" + link + "\"");
+      //view_->display("");
+    } // end if
+  } // end while
+}
+
+
+
+
+/*
+ * Takes in a vector of valid file links, and prompts the user to pick one.
+ * Does NOT display coresponding chioces, only gets input and runs the specified 
+ * dialogue file.
+ */
+void Controller::loadDecisionLinks(std::vector<std::string>) {
+  std::string input = view_->getInput();
+  
 }
 
 
@@ -237,18 +258,19 @@ void Controller::parceDecision(std::ifstream &inFile)
  *
  * '=' implies that the folowing items are player selectable choices
  */
-void Controller::nocabParseFile(const char* path)
+void Controller::nocabParseFile(std::string path)
 {
   // I need to read a file line by line untill I find the specified character
   
   
   std::string x;
   ///Users/arthurbacon/Desktop/GitProjects/XenoSapiens/Xeno Sapient/
-  std::ifstream inFile("text/test.txt");
+  std::ifstream inFile(path);
   //inFile.open("test");
   
   if (!inFile.is_open()) {
-    view_->display("didn't open a new file");
+    view_->display("!!didn't open a new file!! Err in Controller nocabParseFile");
+    return;
   }
   
   // Check every line in the file for the first character
@@ -263,15 +285,39 @@ void Controller::nocabParseFile(const char* path)
     switch (x.at(0))
     {
       case '=':
+      {
         // character choice found
-        view_->display("  Going into parceDecision");
-        parceDecision(inFile);
-        view_->display("  Coming out parceDecision");
+        std::vector<std::string> links = parceDecision(inFile);
         
+        bool validInput = false;
+        // Logic for getting a valid input
+        while (!validInput) {
+          
+          // Get which link we want to follow
+          std::string input = view_->getInput();
+          
+          // Make sure that's a valid choice
+          int inputint;
+          try {
+            inputint = std::stoi(input);
+          } catch(std::invalid_argument e) {
+            
+            view_->display("I didn't understand the choice of: \""+input+"\"");
+          }
+          
+          if (inputint > links.size() || inputint < 0) {
+            view_->display("I didn't understand the choice of: \"" + input + "\"");
+          }
+          
+          nocabParseFile(links[inputint - 1]);
+          
+          
+        }
         
-        // Here we've found the close tag.
         
         break;
+      } // end case '='
+        
       default:
         // No code char, print description
         view_->display(x);
@@ -281,6 +327,7 @@ void Controller::nocabParseFile(const char* path)
     
   }
   
+  view_->display("EOF");
   
   inFile.close();
   

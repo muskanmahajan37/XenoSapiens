@@ -1,0 +1,6 @@
+In test_1.txt file
+=
+1) AAAA =text/test_2.txt=
+=
+///////////////////////
+After test-1.txt decision tree
