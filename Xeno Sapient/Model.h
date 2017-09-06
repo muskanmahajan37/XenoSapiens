@@ -35,9 +35,18 @@ namespace xs_game {
     /**
      * Get the descriptior of the specified thing "at" in the current room.
      * If this room doesn't contain object refered to with at, then a default
-     * message is returned.
+     * message is returned describing the room.
      */
     std::string look(std::string at);
+    
+    // TODO: remove this
+    std::shared_ptr<std::string> lookBig(std::string at);
+    
+    /**
+     * A getter method to get the filepath to the description of the current room.
+     */
+    //TODO: Add the 'at' functionality, allowing us to look at items in the room
+    std::string getDescriptionFilePath(std::string at);
     
     /**
      * The initial set up for the rooms of the game. Creates all required Rooms

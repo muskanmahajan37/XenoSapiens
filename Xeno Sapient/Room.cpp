@@ -58,8 +58,9 @@ Room::~Room() noexcept
 std::string Room::look(std::string at) const
 {
   //TODO: Every room has its own description?
-  return description;
-  //return "fixme! Room.cpp look function\n";
+  //return 0;
+  //return description;
+  return "fixme! Room.cpp look function\n";
 }
 
 /**
@@ -129,6 +130,16 @@ bool Room::removeConnectionOneWay(std::shared_ptr<Room> neighborToRemove)
 void Room::setDescription(std::string newDescritpion)
 {
   description = newDescritpion;
+}
+
+
+void Room::setDescriptionFile(std::string newDescriptionPath) {
+  descriptionPath_ = newDescriptionPath;
+}
+
+
+std::string Room::getDescriptionFilePath(std::string at) {
+  return descriptionPath_;
 }
 
 

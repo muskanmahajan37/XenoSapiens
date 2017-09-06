@@ -44,6 +44,11 @@ namespace xs_game {
     void display(std::string message);
     
     /**
+     * Displayes the given message to the screen.
+     */
+    void display(std::shared_ptr<std::string> message);
+    
+    /**
      * Retrieve the next full input from the user.
      */
     std::string getInput();

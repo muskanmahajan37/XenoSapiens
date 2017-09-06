@@ -29,6 +29,9 @@ std::string Model::look(std::string at) {
   return currentRoom->look(at);
 }
 
+std::string Model::getDescriptionFilePath(std::string at) {
+  return currentRoom->getDescriptionFilePath(at);
+}
 
 /**
  * Sets up all the rooms: Creates, links and populates all rooms.
@@ -43,11 +46,21 @@ void Model::initRooms() {
   std::shared_ptr<Room> canteniaRoom(new Room());
   std::shared_ptr<Room> lockerRoom(new Room());
   
-  commonRoom->setDescription("Common Room Description\n");
-  hallwayRoom->setDescription("Hall Description\n");
-  medRoom->setDescription("Med Description\n");
-  canteniaRoom->setDescription("Cantenia des\n");
-  lockerRoom->setDescription("Locker des\n");
+  /* Set descriptions */
+  commonRoom->setDescription     ("Common Room Description\n");
+  commonRoom->setDescriptionFile ("text/Theseus/TheseusHall.txt");
+  hallwayRoom->setDescription    ("Hall Description\n");
+  hallwayRoom->setDescriptionFile("text/Theseus/TheseusHall.txt");
+  medRoom->setDescription        ("Med Description\n");
+  medRoom->setDescriptionFile    ("text/Theseus/TheseusCryo.txt");
+
+  canteniaRoom->setDescription    ("Cantenia des\n");
+  canteniaRoom->setDescriptionFile("text/Theseus/TheseusCantenia.txt");
+  lockerRoom->setDescription      ("Locker des\n");
+  lockerRoom->setDescriptionFile  ("text/Theseus/TheseusLockerRoom.txt");
+
+  
+  /* Set directions */
   
   // hallway is south of commonRoom
   dirSet(hallwayRoom, "south", commonRoom);

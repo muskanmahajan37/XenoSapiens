@@ -24,6 +24,8 @@
 
 #include "Util.h"
 
+#include <unistd.h>
+
 using namespace xs_game;
 
 
@@ -44,31 +46,34 @@ int main(int argc, const char * argv[]) {
   std::shared_ptr<View> view = std::shared_ptr<View>(new View());
   std::shared_ptr<Controller> controller = std::unique_ptr<Controller>(new Controller(model, view));
   
-  controller->nocabParseFile("text/test.txt");
+  //controller->nocabParseFile("text/test.txt");
   
-//  model->setUpRooms();
-//  
-//  std::cout << model->look("garbage string");
-//  
-//  
-//  controller->init();
-//  //controller->play();
-//  
-//  
+  model->setUpRooms();
+  
+  //std::cout << model->look("garbage string");
+  
+  
+  controller->init();
+  controller->play();
+  
+  
 //  std::string x;
-//  ///Users/arthurbacon/Desktop/GitProjects/XenoSapiens/Xeno Sapient/
-//  std::ifstream inFile("descriptions/test.txt");
-//  //inFile.open("test");
-//  
-//  if (!inFile.is_open()) {
-//    std::cout << "didn't open a new file\n";
-//  }
-//  
-//  while (getline(inFile, x)) {
-//    std::cout << x << std::endl ;
-//  }
-//  
-//  inFile.close();
+  
+  
+  /*
+  std::ifstream inFile;
+  inFile.open("text/Theseus/TheseusHall.txt");
+  if (!inFile.is_open()) {
+    std::cout << "didn't open a new file\n";
+    std::cout << "attempted to open:text\\Theseus\\TheseusHall\n";
+  }
+  
+  while (getline(inFile, x)) {
+    std::cout << x << std::endl ;
+  }
+  
+  inFile.close();
+  */
   
   return 0;
 }

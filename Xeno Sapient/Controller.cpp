@@ -49,8 +49,15 @@ bool Controller::changeRoom(std::string dir)
 // TODO: make this a void funciton.
 std::string Controller::look(std::string at)
 {
-  view_->display(model_->look(at));
-  return "Garbage string remove me controller.cpp";
+  // Get the file to be read out
+  std::string path = model_->getDescriptionFilePath(at);
+  
+  // This will display to _view
+  nocabParseFile(path);
+  
+  
+  //view_->display(model_->lookBig(at));
+  return "Garbage string remove me controller.cpp End of look function";
 }
 
 bool Controller::init()
@@ -91,11 +98,12 @@ void Controller::play()
       case LOOK:
         //std::cout << "case LOOK:\n";
         
-        if (tokens.size() == 1) {
+        
+        if (tokens.size() == 1) {             // If you only have "LOOK" then look at the room
           //std::cout << "  size == 1\n";
-          view_->display(model_->look("garbage"));
-        } else if (tokens.size() == 2) {
-          view_->display(model_->look(tokens.at(1)));
+          view_->display(this->look("garbage @ Controller.cpp play"));
+        } else if (tokens.size() == 2) {      // Look at the specified object
+          view_->display(this->look(tokens.at(1)));
         } else {
           // Can't really look at 2 things at once...
         }
@@ -238,9 +246,7 @@ std::vector<std::string> Controller::parceDecision(std::ifstream &inFile)
  * dialogue file.
  */
 void Controller::loadDecisionLinks(std::vector<std::string>) {
-  std::string input = view_->getInput();
-  
-}
+  std::string input = view_->getInput();}
 
 
 
@@ -270,6 +276,7 @@ void Controller::nocabParseFile(std::string path)
   
   if (!inFile.is_open()) {
     view_->display("!!didn't open a new file!! Err in Controller nocabParseFile");
+    view_->display("attempted to open:\"" + path + "\"");
     return;
   }
   

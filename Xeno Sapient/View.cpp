@@ -20,6 +20,11 @@ void View::display(std::string message)
   std::cout << message << std::endl;
 }
 
+void View::display(std::shared_ptr<std::string> message)
+{
+  std::cout << message << std::endl;
+}
+
 /**
  * Retrieve the next full input from the user.
  */

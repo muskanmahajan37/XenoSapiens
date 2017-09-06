@@ -88,6 +88,17 @@ namespace xs_game {
     void setDescription(std::string newDescription);
     
     /**
+     * A setter method that sets the path of the description of this room.
+     */
+    void setDescriptionFile(std::string newDescriptionPath);
+    
+    /**
+     * A getter method to get the filepath to the description of this room.
+     */
+    //TODO: Add the 'at' functionality, allowing us to look at items in the room
+    std::string getDescriptionFilePath(std::string at);
+  
+    /**
      * Checks to see if there is a room with the
      */
     std::shared_ptr<Room> checkConnection(std::string dir);
@@ -97,6 +108,7 @@ namespace xs_game {
   private:
     
     std::string description;
+    std::string descriptionPath_;
     
     std::map<std::string, std::shared_ptr<Room>>         connections;
     std::vector<std::shared_ptr<xs_game::Interactable>> useList;
