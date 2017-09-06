@@ -51,9 +51,14 @@ std::string Controller::look(std::string at)
 {
   // Get the file to be read out
   std::string path = model_->getDescriptionFilePath(at);
-  
   // This will display to _view
   nocabParseFile(path);
+  
+  // Get the list of items in the room and display
+  std::string items = model_->getItemsInRoom();
+  
+  // Get the list of possible movement and display
+  std::string paths = model_->getPathsFromRoom();
   
   
   //view_->display(model_->lookBig(at));

@@ -31,7 +31,7 @@ namespace xs_game {
     /**
      * A simple constructor.
      */
-    Room() noexcept;
+    Room(std::string name) noexcept;
     
     /**
      * A constructor that adds the room specified with connection to this
@@ -43,6 +43,11 @@ namespace xs_game {
      * A destructor
      */
     ~Room() noexcept;
+    
+    /**
+     * A getter method for the name of this room.
+     */
+    std::string getName() const;
     
     /**
      * Get the descriptior of the specified thing "at" in this room.
@@ -99,6 +104,21 @@ namespace xs_game {
     std::string getDescriptionFilePath(std::string at);
   
     /**
+     * Adds an Item to this room.
+     */
+    bool addItem();
+    
+    /**
+     * Returns the names of all the items in the room.
+     */
+    std::string stringifyItems();
+    
+    /**
+     * Returns the directions, and names of rooms, connected to this one.
+     */
+    std::string stringifyConnections();
+    
+    /**
      * Checks to see if there is a room with the
      */
     std::shared_ptr<Room> checkConnection(std::string dir);
@@ -107,10 +127,14 @@ namespace xs_game {
     
   private:
     
-    std::string description;
-    std::string descriptionPath_;
+    std::string name_; /** The name of this room */
     
-    std::map<std::string, std::shared_ptr<Room>>         connections;
+    std::string description;      /** The uber basic description, TODO: Remove this */
+    std::string descriptionPath_; /** The path to the description fo this room */
+    
+    /** All the connections out of this room; */
+    std::map<std::string, std::shared_ptr<Room>>        connections;
+    /** All the usable items in this room. */
     std::vector<std::shared_ptr<xs_game::Interactable>> useList;
     
   }; 

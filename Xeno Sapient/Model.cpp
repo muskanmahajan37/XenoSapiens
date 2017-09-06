@@ -20,7 +20,7 @@ using namespace xs_game;
 
 void Model::setUpRooms()
 {
-  currentRoom = std::unique_ptr<Room>(new Room());
+  currentRoom = std::unique_ptr<Room>(new Room("blarg"));
 }
 
 
@@ -33,6 +33,18 @@ std::string Model::getDescriptionFilePath(std::string at) {
   return currentRoom->getDescriptionFilePath(at);
 }
 
+std::string Model::getItemsInRoom() {
+  std::string result = currentRoom->stringifyItems() + " Model.cpp getItemsInRoom\n";
+  std::cout << result;
+  return "TODO: Model.cpp getItemsInRoom";
+}
+
+std::string Model::getPathsFromRoom() {
+  std::string result = currentRoom->stringifyConnections() + " Model.cpp getPathsFromRoom\n";
+  std::cout << result;
+  return "TODO: Model.cpp getPathsFromRoom";
+}
+
 /**
  * Sets up all the rooms: Creates, links and populates all rooms.
  */
@@ -40,11 +52,11 @@ void Model::initRooms() {
   std::cout << "in initRooms in Model.cpp \n";
   
   // To test we will be building 5 rooms
-  std::shared_ptr<Room> commonRoom(new Room());
-  std::shared_ptr<Room> hallwayRoom(new Room());
-  std::shared_ptr<Room> medRoom(new Room());
-  std::shared_ptr<Room> canteniaRoom(new Room());
-  std::shared_ptr<Room> lockerRoom(new Room());
+  std::shared_ptr<Room> commonRoom  (new Room("Common Room"));
+  std::shared_ptr<Room> hallwayRoom (new Room("Hallway"));
+  std::shared_ptr<Room> medRoom     (new Room("Medical Room"));
+  std::shared_ptr<Room> canteniaRoom(new Room("Cantenia Room"));
+  std::shared_ptr<Room> lockerRoom  (new Room("Locker Room"));
   
   /* Set descriptions */
   commonRoom->setDescription     ("Common Room Description\n");

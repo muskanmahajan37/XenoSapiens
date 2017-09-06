@@ -20,9 +20,9 @@ using namespace xs_game;
 /**
  * A simple constructor.
  */
-Room::Room() noexcept
+Room::Room(std::string name) noexcept : name_(name)
 {
-  //connections = std::map<std::string, std::shared_ptr<Room>>();
+  connections = std::map<std::string, std::shared_ptr<Room>>();
   useList = std::vector<std::shared_ptr<Interactable>>();
   
   description = "Default description of a Room\n";
@@ -48,6 +48,10 @@ Room::Room() noexcept
 Room::~Room() noexcept
 {
   //TODO:
+}
+
+std::string Room::getName() const {
+  return name_;
 }
 
 /**
@@ -140,6 +144,20 @@ void Room::setDescriptionFile(std::string newDescriptionPath) {
 
 std::string Room::getDescriptionFilePath(std::string at) {
   return descriptionPath_;
+}
+
+std::string Room::stringifyItems() {
+  
+  return "TODO: Room.cpp stringifyItems()\n";
+}
+
+std::string Room::stringifyConnections() {
+  // Loop through every key, display the key and the value associated with it
+  std::string result;
+  for (auto iter = connections.begin(); iter != connections.end(); ++iter) {
+    result = iter->first + " => " + iter->second->getName() + '\n';
+  }
+  return result;
 }
 
 
