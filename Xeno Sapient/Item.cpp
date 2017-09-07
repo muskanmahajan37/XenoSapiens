@@ -6,20 +6,30 @@
 //  Copyright © 2017 Arthur Bacon. All rights reserved.
 //
 
-#include "Item.hpp"
+#include "Item.h"
 
+
+using namespace xs_game;
 
 /**
  * A simple constructor.
  */
 Item::Item(std::string name) noexcept : name_(name)
 {
-  connections = std::map<std::string, std::shared_ptr<Room>>();
-  useList = std::vector<std::shared_ptr<Interactable>>();
-  
-  description = "Default description of a Room\n";
+
 }
 
+/**
+ * A destructor
+ */
+Item::~Item() noexcept
+{
+  //TODO:
+}
+
+std::string Item::getName() const {
+  return name_;
+}
 
 
 

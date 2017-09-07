@@ -23,7 +23,7 @@ using namespace xs_game;
 Room::Room(std::string name) noexcept : name_(name)
 {
   connections = std::map<std::string, std::shared_ptr<Room>>();
-  useList = std::vector<std::shared_ptr<Interactable>>();
+  useList = std::vector<std::shared_ptr<Item>>();
   
   description = "Default description of a Room\n";
 }
@@ -146,16 +146,24 @@ std::string Room::getDescriptionFilePath(std::string at) {
   return descriptionPath_;
 }
 
+bool Room::addItem(std::shared_ptr<Item> itm) {
+  useList.push_back(itm);
+}
+
 std::string Room::stringifyItems() {
-  
-  return "TODO: Room.cpp stringifyItems()\n";
+  // Loop through every element, display they name
+  std::string result = "Items:\n";
+  for(auto iter = useList.begin(); iter != useList.end(); iter++) {
+    result += (*iter)->getName() + '\n';
+  }
+  return result;
 }
 
 std::string Room::stringifyConnections() {
   // Loop through every key, display the key and the value associated with it
-  std::string result;
+  std::string result = "Connections:\n";
   for (auto iter = connections.begin(); iter != connections.end(); ++iter) {
-    result = iter->first + " => " + iter->second->getName() + '\n';
+    result += iter->first + " => " + iter->second->getName() + '\n';
   }
   return result;
 }

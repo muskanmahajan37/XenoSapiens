@@ -13,6 +13,7 @@
 #include <vector>
 #include <string>
 #include "Interactable.h"
+#include "Item.h"
 
 namespace xs_game {
   
@@ -106,7 +107,7 @@ namespace xs_game {
     /**
      * Adds an Item to this room.
      */
-    bool addItem();
+    bool addItem(std::shared_ptr<Item> itm);
     
     /**
      * Returns the names of all the items in the room.
@@ -132,10 +133,8 @@ namespace xs_game {
     std::string description;      /** The uber basic description, TODO: Remove this */
     std::string descriptionPath_; /** The path to the description fo this room */
     
-    /** All the connections out of this room; */
-    std::map<std::string, std::shared_ptr<Room>>        connections;
-    /** All the usable items in this room. */
-    std::vector<std::shared_ptr<xs_game::Interactable>> useList;
+    std::map<std::string, std::shared_ptr<Room> > connections; /** All the connections out of this room; */
+    std::vector<std::shared_ptr<xs_game::Item> >  useList;     /** All the usable items in this room. */
     
   }; 
   

@@ -42,38 +42,27 @@ int main(int argc, const char * argv[]) {
   
   
 //  
-  std::shared_ptr<Model> model = std::shared_ptr<Model>(new Model());
-  std::shared_ptr<View> view = std::shared_ptr<View>(new View());
-  std::shared_ptr<Controller> controller = std::unique_ptr<Controller>(new Controller(model, view));
+//  std::shared_ptr<Model> model = std::shared_ptr<Model>(new Model());
+//  std::shared_ptr<View> view = std::shared_ptr<View>(new View());
+//  std::shared_ptr<Controller> controller = std::unique_ptr<Controller>(new Controller(model, view));
   
-  //controller->nocabParseFile("text/test.txt");
+//  controller->nocabParseFile("text/test.txt");
+//  
+//  model->setUpRooms();
+//  
+//  std::cout << model->look("garbage string");
+//  
+//  
+//  controller->init();
+//  controller->play();
   
-  model->setUpRooms();
+  Room* testRoom = new Room("test room");
+  std::shared_ptr<Item> item1 = std::shared_ptr<Item>(new Item("Item 1"));
+  std::shared_ptr<Item> item2 = std::shared_ptr<Item>(new Item("Item 2"));
+  testRoom->addItem(item1);
+  testRoom->addItem(item2);
   
-  //std::cout << model->look("garbage string");
-  
-  
-  controller->init();
-  controller->play();
-  
-  
-//  std::string x;
-  
-  
-  /*
-  std::ifstream inFile;
-  inFile.open("text/Theseus/TheseusHall.txt");
-  if (!inFile.is_open()) {
-    std::cout << "didn't open a new file\n";
-    std::cout << "attempted to open:text\\Theseus\\TheseusHall\n";
-  }
-  
-  while (getline(inFile, x)) {
-    std::cout << x << std::endl ;
-  }
-  
-  inFile.close();
-  */
+  std::cout << testRoom->stringifyItems();
   
   return 0;
 }
