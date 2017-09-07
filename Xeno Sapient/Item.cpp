@@ -14,9 +14,17 @@ using namespace xs_game;
 /**
  * A simple constructor.
  */
-Item::Item(std::string name) noexcept : name_(name)
+Item::Item(std::string const& name) noexcept : name_(name)
 {
+  descriptoin_ = name + " Does NOT have a description";
+}
 
+/**
+ * A simple constructor.
+ */
+Item::Item(std::string const& name, std::string const& description) noexcept : name_(name), descriptoin_(description)
+{
+  
 }
 
 /**
@@ -29,6 +37,10 @@ Item::~Item() noexcept
 
 std::string Item::getName() const {
   return name_;
+}
+
+std::string Item::getDescription() const {
+  return descriptoin_;
 }
 
 

@@ -148,6 +148,7 @@ std::string Room::getDescriptionFilePath(std::string at) {
 
 bool Room::addItem(std::shared_ptr<Item> itm) {
   useList.push_back(itm);
+  return true;
 }
 
 std::string Room::stringifyItems() {

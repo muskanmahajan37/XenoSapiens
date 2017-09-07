@@ -22,7 +22,14 @@ namespace xs_game {
     /**
      * A simple constructor.
      */
-    Item(std::string name) noexcept;
+    Item(std::string const& name) noexcept;
+    
+    
+    /**
+     * A simple constructor.
+     */
+    Item(std::string const& name, std::string const& description) noexcept;
+    
     
     /**
      * A destructor
@@ -34,12 +41,17 @@ namespace xs_game {
      */
     std::string getName() const;
     
+    std::string getDescription() const;
+    
   protected:
     
     
   private:
     
     std::string name_; /** The name of this item */
+    std::string descriptoin_; /** The description of this Item */
+    
+    //TODO: Consider how to increase levels of descriptions
   };
   
 }
