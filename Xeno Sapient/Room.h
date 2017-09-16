@@ -55,7 +55,13 @@ namespace xs_game {
      * If this room doesn't contain object refered to with at, then a default
      * message is returned.
      */
-    std::string look(std::string at) const;
+    // To look at an item in the room, use checkInteractabl(std::string name) instead
+    //std::string look(std::string at);
+    
+    /**
+     * Get the descriptor of the current room.
+     */
+    std::string look() const;
     
     /**
      * Adds the specified neighbor to this list of connections, adds this 
@@ -101,26 +107,36 @@ namespace xs_game {
     /**
      * A getter method to get the filepath to the description of this room.
      */
-    //TODO: Add the 'at' functionality, allowing us to look at items in the room
+    //TODO: Add the 'at' functionality, allowing us to look at Interactables in the room
     std::string getDescriptionFilePath(std::string at);
   
     /**
-     * Adds an Item to this room.
+     * Adds an Interactables to this room.
      */
-    bool addItem(std::shared_ptr<Item> itm);
+    bool addInteract(std::shared_ptr<Interactable> interact);
     
     /**
-     * Returns the names of all the items in the room.
+     * Returns the names of all the Interactables in the room.
      */
-    std::string stringifyItems();
+    std::string stringifyInteract();
     
     /**
      * Returns the directions, and names of rooms, connected to this one.
      */
     std::string stringifyConnections();
     
+    
     /**
-     * Checks to see if there is a room with the
+     * Checks to see if there is an Interactable with the specified name/key value
+     * @return the Interactable specified by the name (if it exists)
+     * Else, return NULL
+     */
+    std::shared_ptr<Interactable> checkInteractable(std::string name);
+    
+    /**
+     * Checks to see if there is a room with the specified direction/ key value
+     * @return the room at the end of the target connection (if the connection exists)
+     * Else, return NULL
      */
     std::shared_ptr<Room> checkConnection(std::string dir);
   protected:
@@ -133,10 +149,10 @@ namespace xs_game {
     std::string description;      /** The uber basic description, TODO: Remove this */
     std::string descriptionPath_; /** The path to the description fo this room */
     
-    std::map<std::string, std::shared_ptr<Room> > connections; /** All the connections out of this room; */
-    std::vector<std::shared_ptr<xs_game::Item> >  useList;     /** All the usable items in this room. */
-    
-  }; 
+    std::map<std::string, std::shared_ptr<Room> > connections_; /** All the connections out of this room; */
+    //std::vector<std::shared_ptr<xs_game::Interactable> >  interactables_;     /** All the usable Interactables in this room. */
+    std::map<std::string, std::shared_ptr<Interactable> > interactables_;
+  };
   
 }
 

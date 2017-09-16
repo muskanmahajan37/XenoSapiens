@@ -49,11 +49,11 @@ namespace xs_game {
     std::string getDescriptionFilePath(std::string at);
     
     /**
-     * A method that returns the name of every item in the room. Using this 
-     * function allows the user to eventually 'look' at the items for a more
+     * A method that returns the name of every item/interactable in the room. Using this
+     * function allows the user to eventually 'look' at the items/interactables for a more
      * detailed descriptoin.
      */
-    std::string getItemsInRoom();
+    std::string getInteractInRoom();
     
     /**
      * A method that returns the direction, and name of target room, of 

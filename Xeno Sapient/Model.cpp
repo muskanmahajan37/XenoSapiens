@@ -26,23 +26,32 @@ void Model::setUpRooms()
 
 std::string Model::look(std::string at) {
   
-  return currentRoom->look(at);
+  nocabToLower(at);
+  if (nocabStrCmp(at, "room")) {
+    // If we need the description of the room
+    return currentRoom->look();
+  } else {
+    // else we're looking at something in the room
+    return currentRoom->checkInteractable(at)->getDescription();
+  }
 }
 
 std::string Model::getDescriptionFilePath(std::string at) {
   return currentRoom->getDescriptionFilePath(at);
 }
 
-std::string Model::getItemsInRoom() {
-  std::string result = currentRoom->stringifyItems() + " Model.cpp getItemsInRoom\n";
-  std::cout << result;
-  return "TODO: Model.cpp getItemsInRoom";
+std::string Model::getInteractInRoom() {
+  std::string result = currentRoom->stringifyInteract();
+  result += "-----------------\n";
+  //std::cout << result;
+  return result;
 }
 
 std::string Model::getPathsFromRoom() {
-  std::string result = currentRoom->stringifyConnections() + " Model.cpp getPathsFromRoom\n";
-  std::cout << result;
-  return "TODO: Model.cpp getPathsFromRoom";
+  std::string result = currentRoom->stringifyConnections();
+  //std::cout << result;
+  result += "-----------------\n";
+  return result;
 }
 
 /**
@@ -91,6 +100,16 @@ void Model::initRooms() {
   
   hallwayRoom->addConnectionOneWay("cantenia", lockerRoom);
   lockerRoom->addConnectionOneWay("out", hallwayRoom);
+  
+  
+  std::shared_ptr<Interactable> inter1 (new Interactable("inter1", "Inter1 Description"));
+  std::shared_ptr<Interactable> inter2 (new Interactable("button", "you press the button\nNothing happens"));
+  std::shared_ptr<Interactable> inter3 (new Interactable("aaaaa", "BBBBBBB"));
+  
+  
+  commonRoom->addInteract(inter1);
+  commonRoom->addInteract(inter2);
+  commonRoom->addInteract(inter3);
   
   
   currentRoom = commonRoom;

@@ -47,8 +47,15 @@ namespace xs_game {
      * Get the descriptior of the specified thing "at" in the current room.
      * If this room doesn't contain object refered to with at, then a default
      * message is returned.
+     * This function does it's own printing.
      */
-    std::string look(std::string at);
+    void look(std::string at);
+    
+    /**
+     * Get the descriptor of the current room. 
+     * This function does it's own printing.
+     */
+    void look();
     
     bool init();
     

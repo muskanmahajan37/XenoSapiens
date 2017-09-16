@@ -19,37 +19,45 @@ namespace xs_game {
     
   public:
     
-    /**
-     * A simple constructor.
-     */
-    Item(std::string const& name) noexcept;
-    
-    
-    /**
-     * A simple constructor.
-     */
-    Item(std::string const& name, std::string const& description) noexcept;
-    
-    
-    /**
-     * A destructor
-     */
-    ~Item() noexcept;
-    
-    /**
-     * A getter method for the name of this item.
-     */
-    std::string getName() const;
-    
-    std::string getDescription() const;
+//    /**
+//     * A simple constructor.
+//     */
+//    Item(std::string const& name) noexcept;
+//    
+//    
+//    /**
+//     * A simple constructor.
+//     */
+//    Item(std::string const& name, std::string const& description) noexcept;
+//    
+//    
+//    /**
+//     * A destructor
+//     */
+//    ~Item() noexcept;
+//    
+//    /**
+//     * A getter method for the name of this item.
+//     */
+//    std::string getName() const;
+//    
+//    /**
+//     * Set the description of an interactable.
+//     */
+//    bool setDescription(std::string description);
+//    
+//    /**
+//     * Get the description of an interactable.
+//     */
+//    std::string getDescription() const;
     
   protected:
     
     
   private:
     
-    std::string name_; /** The name of this item */
-    std::string descriptoin_; /** The description of this Item */
+//    std::string name_; /** The name of this item */
+//    std::string descriptoin_; /** The description of this Item */
     
     //TODO: Consider how to increase levels of descriptions
   };

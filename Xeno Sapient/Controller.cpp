@@ -47,22 +47,31 @@ bool Controller::changeRoom(std::string dir)
  * message is returned.
  */
 // TODO: make this a void funciton.
-std::string Controller::look(std::string at)
+void Controller::look(std::string at)
 {
+  view_->display(model_->look(at));
+  //view_->display(model_->lookBig(at));
+}
+
+void Controller::look()
+{
+  // NOTE: This will only get the current Room's descriptor
+  
   // Get the file to be read out
-  std::string path = model_->getDescriptionFilePath(at);
+  std::string path = model_->getDescriptionFilePath("room");
   // This will display to _view
   nocabParseFile(path);
   
   // Get the list of items in the room and display
-  std::string items = model_->getItemsInRoom();
+  std::string items = model_->getInteractInRoom();
+  view_->display(items);
   
   // Get the list of possible movement and display
   std::string paths = model_->getPathsFromRoom();
+  view_->display(paths);
   
   
   //view_->display(model_->lookBig(at));
-  return "Garbage string remove me controller.cpp End of look function";
 }
 
 bool Controller::init()
@@ -106,10 +115,12 @@ void Controller::play()
         
         if (tokens.size() == 1) {             // If you only have "LOOK" then look at the room
           //std::cout << "  size == 1\n";
-          view_->display(this->look("garbage @ Controller.cpp play"));
-        } else if (tokens.size() == 2) {      // Look at the specified object
-          view_->display(this->look(tokens.at(1)));
-        } else {
+          this->look();       // look w/o args => look at room
+        }
+        else if (tokens.size() == 2) {      // Look at the specified object
+          this->look(tokens.at(1));
+        }
+        else {
           // Can't really look at 2 things at once...
         }
         break;
