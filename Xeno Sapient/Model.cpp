@@ -36,6 +36,24 @@ std::string Model::look(std::string at) {
   }
 }
 
+std::shared_ptr<Interactable> Model::checkInteractables(std::string interactable) {
+  return currentRoom->checkInteractable(interactable);
+}
+
+void Model::useInteractable(std::string interactName) {
+  std::shared_ptr<Interactable> interactable = currentRoom->checkInteractable(interactName);
+  auto lamb = interactable->getLambda();
+  
+  if (lamb == 0) {
+    
+  } else {
+    
+  }
+  
+  lamb();
+  
+}
+
 std::string Model::getDescriptionFilePath(std::string at) {
   return currentRoom->getDescriptionFilePath(at);
 }

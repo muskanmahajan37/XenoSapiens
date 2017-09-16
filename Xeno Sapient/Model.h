@@ -39,6 +39,17 @@ namespace xs_game {
      */
     std::string look(std::string at);
     
+    
+    /**
+     *
+     */
+    std::shared_ptr<Interactable> checkInteractables(std::string interactable);
+    
+    /**
+     *
+     */
+    void useInteractable(std::string interactable);
+    
     // TODO: remove this
     std::shared_ptr<std::string> lookBig(std::string at);
     

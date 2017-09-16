@@ -52,6 +52,12 @@ namespace xs_game {
     void look(std::string at);
     
     /**
+     * Attempt to use an item in the current room w/ the name 'useName'
+     * NOTE: this will probably modify the Model folder in some way.
+     */
+    void use(std::string useName);
+    
+    /**
      * Get the descriptor of the current room. 
      * This function does it's own printing.
      */

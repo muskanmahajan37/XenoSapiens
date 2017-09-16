@@ -99,6 +99,7 @@ std::string Room::look() const
   return description;
 }
 
+
 /**
  * Adds the specified neighbor to this list of connections, adds this
  * Room to "neighbor" list of connections.

@@ -56,7 +56,7 @@ namespace xs_game {
     std::string getDescription() const;
     
     /**
-     * Set's this 
+     * Set's this
      */
     bool setLambda(std::function<bool()> newLambda);
     

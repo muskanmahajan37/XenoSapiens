@@ -51,8 +51,8 @@ int main(int argc, const char * argv[]) {
   //std::cout << model->look("garbage string");
   
   
-//  controller->init();
-//  controller->play();
+  controller->init();
+  controller->play();
   
 //  Room* testRoom = new Room("test room");
 //  std::shared_ptr<Item> item1 = std::shared_ptr<Item>(new Item("Item 1"));
@@ -64,6 +64,7 @@ int main(int argc, const char * argv[]) {
 //  
 //  std::cout << model->getPathsFromRoom();
   
+  /*
   auto testLamb =
   [](double d) -> int {
     if (d < 10) {
@@ -72,10 +73,11 @@ int main(int argc, const char * argv[]) {
       return d;
     }
   };
-  
+  */
+   
   //int result = testLamb(5);
   
-  std::cout << std::to_string(testLamb(10)) << std::endl;
+  //std::cout << std::to_string(testLamb(10)) << std::endl;
   
   
   

@@ -8,6 +8,7 @@
 
 #include "Interactable.h"
 
+#include <iostream>
 
 using namespace xs_game;
 
@@ -17,7 +18,7 @@ using namespace xs_game;
 Interactable::Interactable(std::string const& name) noexcept : name_(name)
 {
   descriptoin_ = name + " Does NOT have a description. Interactable.";
-  useFunction = []() { return true; };
+  useFunction = [](){ std::cout << "USED AN INTERACTABLE\n"; return true;};
 }
 
 /**
@@ -25,7 +26,7 @@ Interactable::Interactable(std::string const& name) noexcept : name_(name)
  */
 Interactable::Interactable(std::string const& name, std::string const& description) noexcept : name_(name), descriptoin_(description)
 {
-  
+  useFunction = [](){ std::cout << "USED AN INTERACTABLE\n"; return true;};
 }
 
 /**

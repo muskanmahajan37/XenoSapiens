@@ -74,6 +74,23 @@ void Controller::look()
   //view_->display(model_->lookBig(at));
 }
 
+
+void Controller::use(std::string useName) {
+  //model_->use(useName);
+
+  //First make sure the item exists, if it does then 'use' it
+  // if it doesn't then alert the player that the obj isn't in the room
+
+  if (model_->checkInteractables(useName)) {
+    // The item exists
+    model_->useInteractable(useName);
+  } else {
+    // The item doesn't exist
+    view_->display("The item:\"" + useName + "\" doesn't exist or can't be used.");
+  }
+  
+}
+
 bool Controller::init()
 {
   model_->init();
@@ -122,6 +139,19 @@ void Controller::play()
         }
         else {
           // Can't really look at 2 things at once...
+        }
+        break;
+      case USE:
+        
+        // Make sure it's not a mallformed command
+        if (tokens.size() == 2) {
+          // Just use the item
+          this->use(tokens.at(1));
+          
+        } else if (tokens.size() == 3) {
+          // Use an item on the interactable
+          view_->display("ERROR: using w/ 3 obj is not supported yet... Controller.cpp play()");
+        
         }
         break;
         
