@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <string>
 #include <functional>
+#include <map>
+#include <memory>
 
 namespace xs_game {
   
@@ -58,14 +60,43 @@ namespace xs_game {
     /**
      * Set's this
      */
-    bool setLambda(std::function<bool()> newLambda);
+    bool setLambda(std::function<bool(std::shared_ptr<std::map<std::string, bool> >)> newLambda);
+    /**
+     * Below is a breif description of this... garbage looking type
+     *
+     * std::function<                       - The type is a lambda function, first and formost
+     *               bool                   - The lambda returns a bool type
+     *               (std::shared_ptr<                         - The lambda takes in a shared pointer...
+     *                                std::map<                - of type Map...
+     *                                         std::string,    - which pairs strings...
+     *                                         bool            - to bool values
+     *                                        >
+     *                               >
+     *               )
+     *              >
+     */
     
     /**
      * Getter for the lambda in this interactable object.
      * This lambda represents the efects of using this Interactable 
-     * during the game, and will modify the Model folder in some way.
+     * during the game, and will modify the Model folder in some way.    
      */
-    std::function<bool()> getLambda() const;
+    std::function<bool(std::shared_ptr<std::map<std::string, bool> >)> getLambda() const;
+    /**
+     * Below is a breif description of this... garbage looking type
+     *
+     * std::function<                       - The type is a lambda function, first and formost
+     *               bool                   - The lambda returns a bool type
+     *               (std::shared_ptr<                         - The lambda takes in a shared pointer...
+     *                                std::map<                - of type Map...
+     *                                         std::string,    - which pairs strings...
+     *                                         bool            - to bool values
+     *                                        >
+     *                               >
+     *               )
+     *              >
+     */
+    
     
   protected:
     
@@ -76,7 +107,22 @@ namespace xs_game {
     std::string descriptoin_; /** The description of this Item */
     //TODO: Consider how to increase levels of descriptions
     
-    std::function<bool()> useFunction;
+    /**
+     * This is the function that will be run when the player 'uses' an interactabl.
+     * Below is a breif description of this... garbage looking type
+     * 
+     * std::function<                       - The type is a lambda function, first and formost
+     *               bool                   - The lambda returns a bool type
+     *               (std::shared_ptr<                         - The lambda takes in a shared pointer...
+     *                                std::map<                - of type Map...
+     *                                         std::string,    - which pairs strings...
+     *                                         bool            - to bool values
+     *                                        >
+     *                               >
+     *               )
+     *              >
+     */
+    std::function<bool(std::shared_ptr<std::map<std::string, bool> >)> useFunction;
     
     /*
      example function

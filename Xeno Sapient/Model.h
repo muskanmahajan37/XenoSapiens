@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <memory>
+#include <map>
 
 #include "Room.h"
 #include "Player.h"
@@ -102,6 +103,7 @@ namespace xs_game {
     std::shared_ptr<xs_game::Room> currentRoom;
     xs_game::Player player;
     
+    std::shared_ptr<std::map<std::string, bool> > currentVars;
     
   };
   

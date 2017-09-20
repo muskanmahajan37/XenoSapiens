@@ -21,6 +21,8 @@ using namespace xs_game;
 void Model::setUpRooms()
 {
   currentRoom = std::unique_ptr<Room>(new Room("blarg"));
+  currentVars = std::shared_ptr<std::map<std::string, bool> >(new std::map<std::string, bool>);
+  currentVars->insert(std::pair<std::string,int>("Test value",200));
 }
 
 
@@ -41,6 +43,7 @@ std::shared_ptr<Interactable> Model::checkInteractables(std::string interactable
 }
 
 void Model::useInteractable(std::string interactName) {
+  std::cout << "Starting useInteractable Model.cpp\n";
   std::shared_ptr<Interactable> interactable = currentRoom->checkInteractable(interactName);
   auto lamb = interactable->getLambda();
   
@@ -50,8 +53,14 @@ void Model::useInteractable(std::string interactName) {
     
   }
   
-  lamb();
+  //std::map<std::string, bool> *testMap = new std::map<std::string, bool>();
+  //lamb(testMap);
   
+  std::cout << "Running lamb useInteractable Model.cpp\n";
+  
+  lamb(currentVars);
+  
+  std::cout << "Finished Running lamb useInteractable Model.cpp\n";
 }
 
 std::string Model::getDescriptionFilePath(std::string at) {

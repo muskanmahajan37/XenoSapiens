@@ -9,6 +9,7 @@
 #include "Interactable.h"
 
 #include <iostream>
+#include <map>
 
 using namespace xs_game;
 
@@ -18,15 +19,29 @@ using namespace xs_game;
 Interactable::Interactable(std::string const& name) noexcept : name_(name)
 {
   descriptoin_ = name + " Does NOT have a description. Interactable.";
-  useFunction = [](){ std::cout << "USED AN INTERACTABLE\n"; return true;};
+  useFunction = [](std::shared_ptr<std::map<std::string, bool> >){ std::cout << "USED AN INTERACTABLE\n"; return true;};
 }
 
 /**
  * A simple constructor.
  */
+/**
+ * Below is a breif description of this... garbage looking type
+ *
+ * std::function<                       - The type is a lambda function, first and formost
+ *               bool                   - The lambda returns a bool type
+ *               (std::shared_ptr<                         - The lambda takes in a shared pointer...
+ *                                std::map<                - of type Map...
+ *                                         std::string,    - which pairs strings...
+ *                                         bool            - to bool values
+ *                                        >
+ *                               >
+ *               )
+ *              >
+ */
 Interactable::Interactable(std::string const& name, std::string const& description) noexcept : name_(name), descriptoin_(description)
 {
-  useFunction = [](){ std::cout << "USED AN INTERACTABLE\n"; return true;};
+  useFunction = [](std::shared_ptr<std::map<std::string, bool> >){ std::cout << "USED AN INTERACTABLE\n"; return true;};
 }
 
 /**
@@ -51,7 +66,23 @@ std::string Interactable::getDescription() const {
 }
 
 
-bool Interactable::setLambda(std::function<bool()> newLambda) {
+
+
+/**
+ * Below is a breif description of this... garbage looking type
+ *
+ * std::function<                       - The type is a lambda function, first and formost
+ *               bool                   - The lambda returns a bool type
+ *               (std::shared_ptr<                         - The lambda takes in a shared pointer...
+ *                                std::map<                - of type Map...
+ *                                         std::string,    - which pairs strings...
+ *                                         bool            - to bool values
+ *                                        >
+ *                               >
+ *               )
+ *              >
+ */
+bool Interactable::setLambda(std::function<bool(std::shared_ptr<std::map<std::string, bool> >)> newLambda) {
   useFunction = newLambda;
   return true;
 }
@@ -59,7 +90,22 @@ bool Interactable::setLambda(std::function<bool()> newLambda) {
 
 
 
-std::function<bool()> Interactable::getLambda() const {
+
+/**
+ * Below is a breif description of this... garbage looking type
+ *
+ * std::function<                       - The type is a lambda function, first and formost
+ *               bool                   - The lambda returns a bool type
+ *               (std::shared_ptr<                         - The lambda takes in a shared pointer...
+ *                                std::map<                - of type Map...
+ *                                         std::string,    - which pairs strings...
+ *                                         bool            - to bool values
+ *                                        >
+ *                               >
+ *               )
+ *              >
+ */
+std::function<bool(std::shared_ptr<std::map<std::string, bool> >)> Interactable::getLambda() const {
   return useFunction;
 }
 
