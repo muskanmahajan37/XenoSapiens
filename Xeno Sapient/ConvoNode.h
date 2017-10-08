@@ -13,6 +13,10 @@
 #include <memory>
 #include <map>
 #include <vector>
+#include <sstream>
+#include <fstream>
+
+
 
 
 namespace xs_game {
@@ -29,10 +33,21 @@ namespace xs_game {
     
   public:
     
+    
+    /**
+     * A consutructor that takes a flie that represents the root of the convo, and creates
+     */
+    ConvoNode(std::ifstream inFile);
+    
+    /**
+     * A constructor that takes in just a file name
+     */
+    ConvoNode(std::string fileName);
+    
     /**
      * Returns the text to be read/ displayed at this poin in the converastion graph
      */
-    std::string read();
+    //std::string read();
     
     /**
      * Condition displays text, bsed off of the passed in modelVars. This will NOT
@@ -41,9 +56,8 @@ namespace xs_game {
     std::string read(const std::map<std::string, bool>& modelVars);
     
     /**
-     * Folows the graph in the target direction.
-     * For edges, the 'option' input is ignored.
-     * For nodes, the opetion is 0 indexed.
+     * Folows the graph in the target direction. The operation is 0 indexed.
+     * Will NOT do any validity checking with a model object.
      */
     std::shared_ptr<ConvoNode> followGraph(int option);
     
@@ -51,15 +65,33 @@ namespace xs_game {
     
     
   private:
+    /**
+     * A helper for the constructor that builds this node obj one player decisision line at a time
+     */
+    void parceDecisionLine(const std::string& line);
+    /**
+     * A helper for the parceDecisionLine function that converts a string in the form "key, value" or "key,value" into a pair for a map
+     */
+    std::shared_ptr<std::pair<std::string, bool> > stringToPair(const std::string& pairString);
+    /**
+     * Checks if the requirements are met in the given dictionary
+     */
+    bool check(const std::map<std::string, bool>& modelVars, std::shared_ptr<std::pair<std::string, bool> > toBeChecked);
     
     
-    std::vector<std::shared_ptr<ConvoNode> > edges; // The directions in the conversation the player can take
-    std::vector<std::string> playerSelectOptions; // The text for the options the player can select
     std::string beforeText; // Text that displays before the player options. The main beef of the convo/sceene
     
-    std::vector<std::pair<std::string, bool> > requirements;
+    /////////////////////
+    // Fields related to player selection
+    /** The requirements that must be true to display the playerSelectOption */
+    std::vector<std::shared_ptr<std::pair<std::string, bool> > > requirements; // null => no requirements
     
-    std::vector<std::pair<std::string, bool> > changes;
+    /** The change that will be made to the model vars if this option is selected */
+    std::vector<std::shared_ptr<std::pair<std::string, bool> > > changes;      // null => no changes
+    
+    /** The file name of the next convonode object */
+    std::vector<std::shared_ptr<std::string> > edges; // The directions the player can take, each element is a file name
+    std::vector<std::string> playerSelectOptions; // The text for the options the player can select
     
     
   };
@@ -124,6 +156,7 @@ namespace xs_game {
 
 
 #endif /* ConversationGraph_h */
+
 
 
 

@@ -103,7 +103,7 @@ namespace xs_game {
     std::shared_ptr<xs_game::Room> currentRoom;
     xs_game::Player player;
     
-    std::map<std::string, bool> currentVars;
+    std::shared_ptr<std::map<std::string, bool> > currentVars;
     
   };
   

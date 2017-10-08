@@ -216,121 +216,127 @@ void Controller::viewFile(std::ifstream inFile)
 
 std::vector<std::string> Controller::parceDecision(std::ifstream &inFile)
 {
-  std::string x;
-  std::vector<std::string> links;
-  std::vector<std::pair<std::string, bool> > boolChanges;
   
-  // We come in, it starts off on the line of the open '=' tag
-  // Move to the next line
-  // Is that the close tag?
-  //  yes => return
-  //  no  => print line
-  // Move to the next line
-  // Is that the close tag?
-  //  yes => return
-  //  no => print line
+  std::vector<std::string> result;
+  result.push_back("TODO: Controller.cpp parce Decision()");
+  return result;
   
-  /* NOTE: the only way to exit this loop is in the first if check.
-   *        the only way to exit this loop is if the file we're reading
-   *        actually has a closing '=' tag.
-   */
-  while(true) {
-    
-    // Vars used to help keep the two vectors in parellel
-    bool nextFilePush = false;
-    bool boolChangePush = false;
-    
-    
-    // TODO: error handeling for mallformed tags here:
-    // get the line from the view next time...
-    getline(inFile, x);
-    bool diterminedText = false;
-    
-    if (x.at(0) == '=') {
-      // We've found the close tag.
-      return links;
-    } else {
-      // We need to remove the destination from it then display it
-      std::string link;
-      int firstTag  = -1;
-      int secondTag = -1;
-      for (int i = 0; i < x.size(); i++) {
-        
-        switch(x.at(i)) {
-          case '{':
-          case '[':
-          case '(':
-          {
-            firstTag = i;
-            if (!diterminedText) {
-              x = x.substr(0, firstTag);
-              diterminedText = true;
-            }
-            break;
-          }
-          /////////
-          case '}':       // {} are for setting the next file to read
-          {
-            secondTag = i;
-            
-            link = x.substr(firstTag + 1, secondTag - firstTag - 1);
-            links.push_back(link);
-            nextFilePush = true;
-            break;
-          }
-          /////////
-          case ']':       // [] are for checking to see if option is avaliable
-          {
-            secondTag = i;
-            std::string requiredBool = x.substr(firstTag + 1, secondTag - firstTag - 1);
-            if(model_->checkBool(requiredBool) && diterminedText) {
-              view_->display(x);
-            } else if (!diterminedText) {
-              view_->display("ERR in parceDecision controller.cpp: Tried to print unditermined text");
-            }
-            break;
-          }
-          /////////
-          case ')':       // () are for modifying model bools if the option is chosen
-          {
-            secondTag = i;
-            std::string changeBool = x.substr(firstTag + 1, secondTag - firstTag - 1);
-            std::pair<std::string, bool> changePairTemp = this->parceChangeBool(changeBool);
-            boolChanges.push_back(changePairTemp);
-            boolChangePush = true;
-            break;
-          }
-          // default do nothing
-          default:
-          {
-            
-          }
-          
-        } // end switch;
-        
-        if (!boolChangePush) {
-          links.push_back("\0");
-        }
-        
-        
-        /*
-        if (x.at(i) == '{') {
-          firstTag = i;
-          continue;
-        }
-        if (x.at(i) == '}') {
-          secondTag = i;
-        }
-        
-        if (secondTag != 0) {
-          
-        }
-         */
-        
-      }// end for loop
-      
-    } // end if
-  } // end while
+  
+//  std::string x;
+//  std::vector<std::string> links;
+//  std::vector<std::pair<std::string, bool> > boolChanges;
+//
+//  // We come in, it starts off on the line of the open '=' tag
+//  // Move to the next line
+//  // Is that the close tag?
+//  //  yes => return
+//  //  no  => print line
+//  // Move to the next line
+//  // Is that the close tag?
+//  //  yes => return
+//  //  no => print line
+//
+//  /* NOTE: the only way to exit this loop is in the first if check.
+//   *        the only way to exit this loop is if the file we're reading
+//   *        actually has a closing '=' tag.
+//   */
+//  while(true) {
+//
+//    // Vars used to help keep the two vectors in parellel
+//    bool nextFilePush = false;
+//    bool boolChangePush = false;
+//
+//
+//    // TODO: error handeling for mallformed tags here:
+//    // get the line from the view next time...
+//    getline(inFile, x);
+//    bool diterminedText = false;
+//
+//    if (x.at(0) == '=') {
+//      // We've found the close tag.
+//      return links;
+//    } else {
+//      // We need to remove the destination from it then display it
+//      std::string link;
+//      int firstTag  = -1;
+//      int secondTag = -1;
+//      for (int i = 0; i < x.size(); i++) {
+//
+//        switch(x.at(i)) {
+//          case '{':
+//          case '[':
+//          case '(':
+//          {
+//            firstTag = i;
+//            if (!diterminedText) {
+//              x = x.substr(0, firstTag);
+//              diterminedText = true;
+//            }
+//            break;
+//          }
+//          /////////
+//          case '}':       // {} are for setting the next file to read
+//          {
+//            secondTag = i;
+//
+//            link = x.substr(firstTag + 1, secondTag - firstTag - 1);
+//            links.push_back(link);
+//            nextFilePush = true;
+//            break;
+//          }
+//          /////////
+//          case ']':       // [] are for checking to see if option is avaliable
+//          {
+//            secondTag = i;
+//            std::string requiredBool = x.substr(firstTag + 1, secondTag - firstTag - 1);
+//            if(model_->checkBool(requiredBool) && diterminedText) {
+//              view_->display(x);
+//            } else if (!diterminedText) {
+//              view_->display("ERR in parceDecision controller.cpp: Tried to print unditermined text");
+//            }
+//            break;
+//          }
+//          /////////
+//          case ')':       // () are for modifying model bools if the option is chosen
+//          {
+//            secondTag = i;
+//            std::string changeBool = x.substr(firstTag + 1, secondTag - firstTag - 1);
+//            std::pair<std::string, bool> changePairTemp = this->parceChangeBool(changeBool);
+//            boolChanges.push_back(changePairTemp);
+//            boolChangePush = true;
+//            break;
+//          }
+//          // default do nothing
+//          default:
+//          {
+//
+//          }
+//
+//        } // end switch;
+//
+//        if (!boolChangePush) {
+//          links.push_back("\0");
+//        }
+//
+//
+//        /*
+//        if (x.at(i) == '{') {
+//          firstTag = i;
+//          continue;
+//        }
+//        if (x.at(i) == '}') {
+//          secondTag = i;
+//        }
+//
+//        if (secondTag != 0) {
+//
+//        }
+//         */
+//
+//      }// end for loop
+//
+//    } // end if
+//  } // end while
 }
 
 
@@ -389,38 +395,40 @@ void Controller::nocabParseFile(std::string path)
     {
       case '=':
       {
-        // character choice found
-        std::vector<std::string> links = parceDecision(inFile);
+        view_->display("Attempted to display a decision file, these are out of date and unsupported");
         
-        bool validInput = false;
-        int inputint = 0;
-        // Logic for getting a valid input
-        while (!validInput) {
-          
-          // Get which link we want to follow
-          std::string input = view_->getInput();
-          
-          try {
-            inputint = std::stoi(input);
-          } catch(std::invalid_argument e) {
-            
-            view_->display("I didn't understand the choice of: \""+input+"\"");
-          }
-          
-          if (inputint > links.size() || inputint < 0) {
-            view_->display("I didn't understand the choice of: \"" + input + "\"");
-          } else {
-            // input is valid
-            validInput = true;
-          }
-          
-          
-        }
-        
-        
-        nocabParseFile(links[inputint - 1]);
-        
-        break;
+//        // character choice found
+//        std::vector<std::string> links = parceDecision(inFile);
+//
+//        bool validInput = false;
+//        int inputint = 0;
+//        // Logic for getting a valid input
+//        while (!validInput) {
+//
+//          // Get which link we want to follow
+//          std::string input = view_->getInput();
+//
+//          try {
+//            inputint = std::stoi(input);
+//          } catch(std::invalid_argument e) {
+//
+//            view_->display("I didn't understand the choice of: \""+input+"\"");
+//          }
+//
+//          if (inputint > links.size() || inputint < 0) {
+//            view_->display("I didn't understand the choice of: \"" + input + "\"");
+//          } else {
+//            // input is valid
+//            validInput = true;
+//          }
+//
+//
+//        }
+//
+//
+//        nocabParseFile(links[inputint - 1]);
+//
+//        break;
       } // end case '='
         
       
