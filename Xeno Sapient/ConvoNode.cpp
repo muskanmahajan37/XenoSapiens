@@ -6,6 +6,7 @@
 //  Copyright © 2017 Arthur Bacon. All rights reserved.
 //
 
+#include <iostream>
 #include "ConvoNode.h"
 
 
@@ -16,6 +17,11 @@ using namespace xs_game;
 
 
 ConvoNode::ConvoNode(std::ifstream inFile) {
+  
+  if (!inFile.is_open()) {
+    std::cout << "ERR: ConvoNode constructed with bad ifstream" << std::endl;
+  }
+  
   std::string x;
   bool finishdBeforeText = false;
   while(getline(inFile, x)) {
@@ -27,7 +33,10 @@ ConvoNode::ConvoNode(std::ifstream inFile) {
         finishdBeforeText = true;
       } else {
         // We haven't found the decision tag
+//        std::cout << "ConvoNode constructor beforeText:" << std::endl;
+//        std::cout << x << std::endl;
         beforeText.append(x);
+        beforeText.append("\n");
       }
     } else {
       // If we have finished the before text field
@@ -41,6 +50,8 @@ ConvoNode::ConvoNode(std::ifstream inFile) {
       parceDecisionLine(x);
     } // End if
   } // End while(getline(...))
+  
+  //std::cout << "CN array sizes: " + std::to_string(requirements.size()) + "  " + std::to_string(changes.size()) + "  " + std::to_string(edges.size()) + "  " + std::to_string(playerSelectOptions.size()) + "  " << std::endl;
 } // End constructor
 
 ConvoNode::ConvoNode(std::string fileName) : ConvoNode(std::ifstream(fileName)) { }
@@ -66,7 +77,9 @@ void ConvoNode::parceDecisionLine(const std::string& line) {
       if (!setPlayerSelectOptions) {
         // If we have NOT set the playerSelectOptions for this line
         
-        playerSelectOptions.push_back(line.substr(0, i + 1));
+//        std::cout << "  playerSelectOption added:" << std::endl;
+//        std::cout << "  " + line.substr(0, i) << std::endl;
+        playerSelectOptions.push_back(line.substr(0, i));
         setPlayerSelectOptions = true;
       }
       
@@ -76,33 +89,56 @@ void ConvoNode::parceDecisionLine(const std::string& line) {
       // If we find a closing link tag
       int substrDist = i - openIndex - 1;
       std::shared_ptr<std::string> temp = std::make_shared<std::string>(line.substr(openIndex + 1, substrDist));
+      
+//      std::cout << "  edges added:" << std::endl;
+//      std::cout << "  " + *temp << std::endl;
       edges.push_back(temp);
       setEdge = true;
       
     } else if (line.at(i) == ']' && !setRequirements) {
       // If we find a closing requirements tag
       int substrDist = i - openIndex - 1;
+      
+//      std::cout << "  requirements added:" << std::endl;
+//      std::cout << "  " + line.substr(openIndex + 1, substrDist) << std::endl;
       requirements.push_back(stringToPair(line.substr(openIndex + 1, substrDist)));
       setRequirements = true;
       
     } else if (line.at(i) == ')' && !setChange) {
       // If we find a closing changes tag
       int substrDist = i - openIndex - 1;
+      
+//      std::cout << "  changes added:" << std::endl;
+//      std::cout << "  " + line.substr(openIndex + 1, substrDist) << std::endl;
       changes.push_back(stringToPair(line.substr(openIndex + 1, substrDist)));
       setChange = true;
     }
   }
   
   // If nothing has been set yet then make sure to push back a blank value to keep the arrays equal in size.
+  if (!setPlayerSelectOptions) {
+    playerSelectOptions.push_back(line);
+  }
   if (!setEdge) {
+    
+//    std::cout << "  requirements added:" << std::endl;
+//    std::cout << "  nullptr" << std::endl;
     edges.push_back(nullptr);
   }
   if (!setRequirements) {
+    
+//    std::cout << "  requirements added:" << std::endl;
+//    std::cout << "  nullptr" << std::endl;
     requirements.push_back(nullptr);
   }
   if (!setChange) {
+    
+//    std::cout << "  requirements added:" << std::endl;
+//    std::cout << "  nullptr" << std::endl;
     changes.push_back(nullptr);
   }
+  
+//  std::cout << "== end decisino line ==" << std::endl;
 }
 
 
@@ -143,6 +179,7 @@ std::string ConvoNode::read(const std::map<std::string, bool>& modelVars) {
   result += beforeText + "\n";
   int optionDisplayNumber = 1;
   for (int i = 0; i < edges.size(); i++) { // All relevent field vectors should be the same size
+    //std::cout << "i = " + std::to_string(i) << std::endl;
     if (check(modelVars, requirements.at(i))) {
       // If the requirements are met
       result += "(" + std::to_string(optionDisplayNumber) + ") ";
@@ -156,19 +193,27 @@ std::string ConvoNode::read(const std::map<std::string, bool>& modelVars) {
 
 bool ConvoNode::check(const std::map<std::string, bool> &modelVars, std::shared_ptr<std::pair<std::string, bool> > toBeChecked) {
   if (toBeChecked == nullptr || toBeChecked == NULL) {
+    
     return true;
   }
-  return modelVars.at(toBeChecked->first) == toBeChecked->second;
-}
-
-
-std::shared_ptr<ConvoNode> ConvoNode::followGraph(int option) {
-  if (edges.at(option) == nullptr || edges.at(option) == NULL) {
-    return nullptr;
+  bool modelVarsValue;
+  try {
+    modelVarsValue = modelVars.at(toBeChecked->first);
+  } catch (const std::out_of_range& err) {
+    // If the var doesn't exist, assume it to be false.
+    modelVarsValue = false;
   }
-
-  return std::make_shared<ConvoNode>(edges.at(option));
+  
+  return modelVarsValue == toBeChecked->second;
 }
 
+bool ConvoNode::check(const std::map<std::string, bool> &modelVars, int toBeChecked) {
+  return check(modelVars, requirements.at(toBeChecked));
+}
+
+
+int ConvoNode::vectorLength() {
+  return (int)edges.size();
+}
 
 

@@ -61,6 +61,22 @@ namespace xs_game {
      */
     std::shared_ptr<ConvoNode> followGraph(int option);
     
+    /**
+     * Checks if the requirements are met in the given dictionary
+     */
+    bool check(const std::map<std::string, bool>& modelVars, std::shared_ptr<std::pair<std::string, bool> > toBeChecked);
+    
+    
+    /**
+     * Checks if the requirements are met in the given dictionary
+     */
+    bool check(const std::map<std::string, bool>& modelVars, int toBeChecked);
+    
+    /**
+     * Get the length of the vectors in this object's field. All vectors should be the same
+     */
+    int vectorLength();
+    
   protected:
     
     
@@ -73,10 +89,6 @@ namespace xs_game {
      * A helper for the parceDecisionLine function that converts a string in the form "key, value" or "key,value" into a pair for a map
      */
     std::shared_ptr<std::pair<std::string, bool> > stringToPair(const std::string& pairString);
-    /**
-     * Checks if the requirements are met in the given dictionary
-     */
-    bool check(const std::map<std::string, bool>& modelVars, std::shared_ptr<std::pair<std::string, bool> > toBeChecked);
     
     
     std::string beforeText; // Text that displays before the player options. The main beef of the convo/sceene
@@ -84,13 +96,13 @@ namespace xs_game {
     /////////////////////
     // Fields related to player selection
     /** The requirements that must be true to display the playerSelectOption */
-    std::vector<std::shared_ptr<std::pair<std::string, bool> > > requirements; // null => no requirements
+    std::vector<std::shared_ptr<std::pair<std::string, bool> > > requirements; // null => no requirements   ']'
     
     /** The change that will be made to the model vars if this option is selected */
-    std::vector<std::shared_ptr<std::pair<std::string, bool> > > changes;      // null => no changes
+    std::vector<std::shared_ptr<std::pair<std::string, bool> > > changes;      // null => no changes        ')'
     
     /** The file name of the next convonode object */
-    std::vector<std::shared_ptr<std::string> > edges; // The directions the player can take, each element is a file name
+    std::vector<std::shared_ptr<std::string> > edges; // The directions the player can take, each element is a file name  '}'
     std::vector<std::string> playerSelectOptions; // The text for the options the player can select
     
     

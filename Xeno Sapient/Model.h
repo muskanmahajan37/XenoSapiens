@@ -73,6 +73,8 @@ namespace xs_game {
      */
     std::string getPathsFromRoom();
     
+    std::shared_ptr<std::map<std::string, bool> > getCurrentVars() const;
+    
     /**
      * The initial set up for the rooms of the game. Creates all required Rooms
      * and 

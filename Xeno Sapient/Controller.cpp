@@ -12,6 +12,7 @@
 
 #include "Controller.h"
 #include "NocabUtil.h"
+#include "ConvoNode.h"
 
 
 using namespace xs_game;
@@ -445,6 +446,55 @@ void Controller::nocabParseFile(std::string path)
   
   inFile.close();
   
+}
+
+
+void Controller::runCutsceene(std::string rootFileName) {
+  // Make sure the file exists
+  // Convert it into a ConvoNode
+  // While the next file name is NOT a null
+  //  read the CN
+  //  Get the player input on selection
+  //  convert the player input index to the 'real' index
+  //  reset the current CN
+  //  redo the while loop
+  
+  ConvoNode currentCN (rootFileName);
+  
+  auto currentVars = *(model_->getCurrentVars());
+  view_->display(currentCN.read(currentVars));
+  
+  bool validInput = false;
+  int playerInputIndex = 0;
+  while (!validInput) {
+    std::string playerInput = view_->getInput();
+    try {
+      playerInputIndex = std::stoi(playerInput);
+      validInput = true;
+    } catch (const std::invalid_argument& err) {
+      // invalid input
+      view_->display("Couldn't understand your input please re-enter");
+    }
+  }
+  
+  // Convert playerInputIndex to the 'real' index
+  int realIndex = convertToRealIndex(playerInputIndex, currentCN);
+  
+  currentCN = currentCN.followGraph(realIndex);
+  
+}
+
+
+int Controller::convertToRealIndex(int playerInput, ConvoNode& cn) {
+  for (int i = playerInput; i < cn.vectorLength(); i++) {
+    // While we have NOT found a valid real index
+    if (cn.check(*(model_->getCurrentVars()), i)) {
+      // If we have a valid option, end the loop
+      return i;
+    }
+  }
+  
+  return -1;
 }
 
 

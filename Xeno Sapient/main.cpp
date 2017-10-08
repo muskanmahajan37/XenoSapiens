@@ -23,6 +23,7 @@
 #include "View.h"
 
 #include "Util.h"
+#include "ConvoNode.h"
 
 #include <unistd.h>
 
@@ -51,8 +52,29 @@ int main(int argc, const char * argv[]) {
   //std::cout << model->look("garbage string");
   
   
-  controller->init();
-  controller->play();
+//  controller->init();
+//  controller->play();
+
+  
+  
+  // Testing for the Convo Node
+  
+  ConvoNode cn ("text/test/test.txt");
+  std::ifstream inFile("text/test/test.txt");
+  //ConvoNode fileCN(std::ifstream("text/test/test.txt"));
+  std::map<std::string, bool> modelVars;
+  
+  modelVars.insert(std::pair<std::string, bool>("fakeName", true));
+  modelVars.insert(std::pair<std::string, bool>("falseKey", false));
+  modelVars.insert(std::pair<std::string, bool>("keyToChange", false));
+  
+  std::cout << std::to_string(modelVars.at("keyToChange")) << std::endl;
+  
+  std::cout << "cn.read(modelVars):" << std::endl;
+  std::cout << cn.read(modelVars) << std::endl;
+  std::cout << "----------------" << std::endl;
+  
+  
   
 //  Room* testRoom = new Room("test room");
 //  std::shared_ptr<Item> item1 = std::shared_ptr<Item>(new Item("Item 1"));

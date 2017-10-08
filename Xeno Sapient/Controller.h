@@ -16,6 +16,7 @@
 
 #include "Model.h"
 #include "View.h"
+#include "ConvoNode.h"
 
 //#include "Room.h"
 
@@ -75,10 +76,24 @@ namespace xs_game {
     
     void nocabParseFile(std::string path);
     
+    /**
+     * Runs a cutsceen given the root file name of the dialogue tree
+     */
+    void runCutsceene(std::string rootFileName);
+    
+    /**
+     * A helper for runCutscene, converts a player input into a real index value for the ConvoNode list.
+     */
+    int convertToRealIndex(int playerInput);
+    
   protected:
     
     
   private:
+    /**
+     * A helper for runCutscene, converts a player input into a real index value for the ConvoNode list.
+     */
+    int convertToRealIndex(int playerInput, ConvoNode& cn);
     
     std::vector<std::string> parceDecision(std::ifstream &inFile);
     void loadDecisionLinks(std::vector<std::string>);

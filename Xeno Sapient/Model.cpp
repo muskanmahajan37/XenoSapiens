@@ -215,5 +215,8 @@ void Model::dirSet(std::shared_ptr<Room> a, std::string dir, std::shared_ptr<Roo
   
 }
 
+std::shared_ptr<std::map<std::string, bool> > Model::getCurrentVars() const {
+  return currentVars;
+}
 
 
